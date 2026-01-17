@@ -9,214 +9,35 @@
   <link rel="icon" href="/public/favicon-k-32x32.png" sizes="32x32" type="image/png">
   <link rel="stylesheet" href="/css/styles.css">
   <style>
-    .menu-category {
-      margin-bottom: 2rem;
-    }
-    .menu-category h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #047857;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #047857;
-    }
-    .menu-item {
-      padding: 1rem 0;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    .menu-item:last-child {
-      border-bottom: none;
-    }
-    .menu-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.5rem;
-    }
-    .menu-item-name {
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #1f2937;
-      flex: 1;
-    }
-    .menu-item-price {
-      color: #047857;
-      font-weight: 700;
-      font-size: 1rem;
-      text-align: right;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      flex-shrink: 0;
-      margin-left: 1rem;
-    }
-    .menu-item-price span {
-      display: block;
-    }
-    .menu-item-price div {
-      display: block;
-    }
-    .menu-item-description {
-      color: #6b7280;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-top: 0.5rem;
-    }
-    .complex-item {
-      padding: 1rem 0;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    .complex-item:last-child {
-      border-bottom: none;
-    }
-    .complex-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-    .complex-item-name {
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #1f2937;
-      flex: 1;
-    }
-    .complex-item-price {
-      color: #047857;
-      font-weight: 700;
-      font-size: 1rem;
-      margin-left: 1rem;
-    }
-    #menu-container {
-      min-height: 200px;
-    }
-    .loading {
-      text-align: center;
-      padding: 2rem;
-      color: #6b7280;
-    }
-    .error-message {
-      text-align: center;
-      padding: 2rem;
-      color: #dc2626;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-    .menu-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    @media (min-width: 768px) {
-      .menu-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (min-width: 1024px) {
-      .menu-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    .menu-day-card {
-      background: white;
-      border: 2px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: all 0.3s;
-      overflow: hidden;
-      word-wrap: break-word;
-      max-width: 100%;
-    }
-    .menu-day-card:hover {
-      border-color: #047857;
-      box-shadow: 0 4px 12px rgba(4, 120, 87, 0.1);
-    }
-    .menu-grid {
-      overflow-x: hidden;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    #menu-container {
-      overflow-x: hidden;
-      max-width: 100%;
-      box-sizing: border-box;
-    }
+    .menu-category { margin-bottom: 2rem; }
+    .menu-category h3 { font-size: 1.5rem; font-weight: 700; color: #047857; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #047857; }
+    .menu-item { padding: 1rem 0; border-bottom: 1px solid #e5e7eb; }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+    .menu-item-name { font-weight: 600; font-size: 1.1rem; color: #1f2937; flex: 1; }
+    .menu-item-price { color: #047857; font-weight: 700; font-size: 1rem; text-align: right; display: flex; flex-direction: column; gap: 0.25rem; flex-shrink: 0; margin-left: 1rem; }
+    .menu-item-price span, .menu-item-price div { display: block; }
+    .menu-item-description { color: #6b7280; font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem; }
+    .complex-item { padding: 1rem 0; border-bottom: 1px solid #e5e7eb; }
+    .complex-item:last-child { border-bottom: none; }
+    .complex-item-header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .complex-item-name { font-weight: 600; font-size: 1.1rem; color: #1f2937; flex: 1; }
+    .complex-item-price { color: #047857; font-weight: 700; font-size: 1rem; margin-left: 1rem; }
+    #menu-container { min-height: 200px; overflow-x: hidden; max-width: 100%; box-sizing: border-box; }
+    .loading { text-align: center; padding: 2rem; color: #6b7280; }
+    .error-message { text-align: center; padding: 2rem; color: #dc2626; font-size: 1.1rem; font-weight: 600; }
+    .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; overflow-x: hidden; width: 100%; box-sizing: border-box; }
+    @media (min-width: 768px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .menu-grid { grid-template-columns: repeat(3, 1fr); } }
+    .menu-day-card { background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 1.5rem; transition: all 0.3s; overflow: hidden; word-wrap: break-word; max-width: 100%; }
+    .menu-day-card:hover { border-color: #047857; box-shadow: 0 4px 12px rgba(4, 120, 87, 0.1); }
   </style>
 </head>
-<body>
-  <header>
-    <div class="header-content">
-      <a href="/" class="logo">Krapesto</a>
-      <nav class="desktop-nav">
-        <a href="/">Pradinis</a>
-        <a href="/about/">Apie mus</a>
-        <div class="dropdown">
-          <button class="dropdown-toggle" data-dropdown-toggle="menu-dropdown">Meniu</button>
-          <div id="menu-dropdown" class="dropdown-menu hidden" data-dropdown>
-            <a href="/menu/daily-lunch/">Dienos pietų meniu</a>
-            <a href="/menu/friday-pizza/">Penktadienio picų meniu</a>
-            <a href="/menu/drinks/">Gėrimai</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <button class="dropdown-toggle" data-dropdown-toggle="events-dropdown">Renginiai</button>
-          <div id="events-dropdown" class="dropdown-menu hidden" data-dropdown>
-            <a href="/events/pizza-education/">Picų kepimo edukacija</a>
-            <a href="/events/cocktail-degustation/">Kokteilių degustacija</a>
-            <a href="/events/kids-birthdays/">Vaikų gimtadieniai</a>
-            <a href="/events/family-events/">Šeimos renginiai</a>
-            <a href="/events/eat-as-much-as-you-can/">Valgyk kiek telpa</a>
-          </div>
-        </div>
-        <a href="/gallery/">Galerija</a>
-        <a href="/contact/">Kontaktai</a>
-      </nav>
-      <div class="header-right">
-        <a href="/en/menu/daily-lunch/" style="padding: 0.5rem 0.75rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; color: var(--text-color);">EN</a>
-        <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Toggle menu">
-          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-    <div id="mobile-menu" class="mobile-menu hidden">
-      <button id="mobile-menu-close" class="mobile-menu-close">×</button>
-      <nav class="mobile-nav">
-        <a href="/">Pradinis</a>
-        <a href="/about/">Apie mus</a>
-        <div class="mobile-menu-section">
-          <span>Meniu</span>
-          <a href="/menu/daily-lunch/">Dienos pietų meniu</a>
-          <a href="/menu/friday-pizza/">Penktadienio picų meniu</a>
-          <a href="/menu/drinks/">Gėrimai</a>
-        </div>
-        <div class="mobile-menu-section">
-          <span>Renginiai</span>
-          <a href="/events/pizza-education/">Picų kepimo edukacija</a>
-          <a href="/events/cocktail-degustation/">Kokteilių degustacija</a>
-          <a href="/events/kids-birthdays/">Vaikų gimtadieniai</a>
-          <a href="/events/family-events/">Šeimos renginiai</a>
-          <a href="/events/eat-as-much-as-you-can/">Valgyk kiek telpa</a>
-        </div>
-        <a href="/gallery/">Galerija</a>
-        <a href="/contact/">Kontaktai</a>
-      </nav>
-    </div>
-  </header>
+<body data-hero="day">
+  <div id="header-placeholder"></div>
 
   <main>
-    <section class="hero" style="min-height: 40vh;">
-      <div class="hero-bg">
-        <img src="/images/hero/meniu/daily-lunch.jpg" alt="Delicious lunch plate">
-      </div>
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1>Dienos pietų meniu</h1>
-        <p>Pirmadienis-Penktadienis, 11:00 - 16:00</p>
-      </div>
-    </section>
+    <div id="hero-placeholder"></div>
 
     <section class="section bg-white">
       <div class="container">
@@ -227,296 +48,105 @@
     </section>
   </main>
 
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <h3 class="footer-title">Krapesto</h3>
-        <p style="font-size: 0.875rem; color: var(--text-muted);">Šeimos restoranas, kur kuriami prisiminimai prie skanių patiekalų.</p>
-      </div>
-      <div>
-        <h4 class="footer-title" style="font-size: 1.125rem;">Nuorodos</h4>
-        <ul class="footer-links">
-          <li><a href="/about/">Apie mus</a></li>
-          <li><a href="/menu/">Meniu</a></li>
-          <li><a href="/gallery/">Galerija</a></li>
-          <li><a href="/contact/">Kontaktai</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-title" style="font-size: 1.125rem;">Kontaktai</h4>
-        <div class="footer-contact">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-          </svg>
-          <span>Keramikų 2, LT-10232, Vilnius, Lietuva</span>
-        </div>
-        <div class="footer-contact">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-          </svg>
-          <a href="tel:+37064557261">+370 645 57261</a>
-        </div>
-        <div class="footer-contact">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-          </svg>
-          <a href="mailto:info@krapesto.lt">info@krapesto.lt</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© <span id="current-year"></span> Krapesto. Visos teisės saugomos.</p>
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
+  <script src="/js/layout.js"></script>
   <script src="/js/main.js"></script>
   <script>
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    // Detect language from URL
     const language = window.location.pathname.startsWith('/en') ? 'en' : 'lt';
-    
-    // API endpoint for list page (fetches ALL published menus)
-    // Returns: { menus: DailyMenu[] }
-    // NO date parameter - fetches all published menus
     const API_URL = 'http://57.128.249.100:8000/api/lunch-menu/week/';
-    const POLL_INTERVAL = 15000; // 15 seconds
-    
-    // Debug logging
-    console.log('List page - API URL (no date filter):', API_URL);
-    
+    const POLL_INTERVAL = 15000;
     let pollTimer = null;
     
-    // Escape HTML to prevent XSS
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
-    
-    // Format price
-    function formatPrice(price) {
-      return '€' + parseFloat(price).toFixed(2);
-    }
-    
-    // Format date for display
+    function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
+    function formatPrice(price) { return '€' + parseFloat(price).toFixed(2); }
     function formatDate(dateStr) {
       const date = new Date(dateStr);
-      const options = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-      };
-      return date.toLocaleDateString(language === 'lt' ? 'lt-LT' : 'en-US', options);
+      return date.toLocaleDateString(language === 'lt' ? 'lt-LT' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     }
     
-    // Render a single menu entry (reusable component for both list and single-day views)
     function renderSingleMenu(menuData) {
-      if (!menuData || !menuData.published) {
-        return '';
-      }
+      if (!menuData || !menuData.published) return '';
+      const hasDishes = menuData.categories && menuData.categories.some(cat => cat.dishes && cat.dishes.length > 0);
+      if (!hasDishes && (!menuData.complexes || menuData.complexes.length === 0)) return '';
       
-      // Check if menu has dishes or complexes
-      const hasDishes = menuData.categories && menuData.categories.some(cat => 
-        cat.dishes && cat.dishes.length > 0
-      );
-      
-      if (!hasDishes && (!menuData.complexes || menuData.complexes.length === 0)) {
-        return '';
-      }
-      
-      let html = '';
-      
-      // Add date header for each menu
-      html += `<div style="margin-bottom: 3rem;">`;
+      let html = `<div style="margin-bottom: 3rem;">`;
       html += `<h2 style="font-size: 1.75rem; font-weight: 700; color: #047857; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #047857;">${formatDate(menuData.date)}</h2>`;
       
-      // Render categories
       if (menuData.categories && menuData.categories.length > 0) {
         menuData.categories.forEach(category => {
           if (!category.dishes || category.dishes.length === 0) return;
-          
           const categoryName = language === 'lt' ? category.name_lt : category.name_en;
-          
-          html += `<div class="menu-category">`;
-          html += `<h3>${escapeHtml(categoryName)}</h3>`;
-          
+          html += `<div class="menu-category"><h3>${escapeHtml(categoryName)}</h3>`;
           category.dishes.forEach(dish => {
             const dishName = language === 'lt' ? dish.name_lt : dish.name_en;
             const dishIngredients = language === 'lt' ? dish.ingredients_lt : dish.ingredients_en;
-            
-            html += `<div class="menu-item">`;
-            html += `<div class="menu-item-header">`;
-            html += `<div class="menu-item-name">${escapeHtml(dishName)}</div>`;
-            html += `<div class="menu-item-price">`;
-            
+            html += `<div class="menu-item"><div class="menu-item-header"><div class="menu-item-name">${escapeHtml(dishName)}</div><div class="menu-item-price">`;
             if (dish.half_price) {
-              html += `<div>½ ${language === 'lt' ? 'porcijos' : 'size'}: ${formatPrice(dish.half_price)}</div>`;
-              html += `<div>${language === 'lt' ? 'Pilna porcija' : 'Full size'}: ${formatPrice(dish.price)}</div>`;
-            } else {
-              html += `<span>${formatPrice(dish.price)}</span>`;
-            }
-            
-            html += `</div>`;
-            html += `</div>`;
-            
-            if (dishIngredients) {
-              html += `<div class="menu-item-description">${escapeHtml(dishIngredients)}</div>`;
-            }
-            
+              html += `<div>½ ${language === 'lt' ? 'porcijos' : 'size'}: ${formatPrice(dish.half_price)}</div><div>${language === 'lt' ? 'Pilna porcija' : 'Full size'}: ${formatPrice(dish.price)}</div>`;
+            } else { html += `<span>${formatPrice(dish.price)}</span>`; }
+            html += `</div></div>`;
+            if (dishIngredients) { html += `<div class="menu-item-description">${escapeHtml(dishIngredients)}</div>`; }
             html += `</div>`;
           });
-          
           html += `</div>`;
         });
       }
       
-      // Render complexes
       if (menuData.complexes && menuData.complexes.length > 0) {
-        html += `<div class="menu-category">`;
-        html += `<h3>${language === 'lt' ? 'Kompleksai' : 'Complexes'}</h3>`;
-        
+        html += `<div class="menu-category"><h3>${language === 'lt' ? 'Kompleksai' : 'Complexes'}</h3>`;
         menuData.complexes.forEach(complex => {
           if (!complex.dish_options || complex.dish_options.length === 0) return;
-          
           complex.dish_options.forEach(option => {
             let displayName = '';
-            
             if (option.soup && option.main_dish) {
               const soupName = language === 'lt' ? option.soup.name_lt : option.soup.name_en;
               const mainDishName = language === 'lt' ? option.main_dish.name_lt : option.main_dish.name_en;
               const soupSize = option.soup_size === 'half' ? ' ½ ' + (language === 'lt' ? 'porcijos' : 'size') : '';
-              const connector = language === 'lt' ? ' ir ' : ' and ';
-              displayName = soupName + soupSize + connector + mainDishName;
-            } else if (option.main_dish) {
-              displayName = language === 'lt' ? option.main_dish.name_lt : option.main_dish.name_en;
-            } else if (option.soup) {
-              displayName = language === 'lt' ? option.soup.name_lt : option.soup.name_en;
-            } else {
-              displayName = language === 'lt' ? complex.name_lt : complex.name_en;
-            }
-            
-            html += `<div class="complex-item">`;
-            html += `<div class="complex-item-header">`;
-            html += `<div class="complex-item-name">${escapeHtml(displayName)}</div>`;
-            html += `<div class="complex-item-price">${formatPrice(complex.price)}</div>`;
-            html += `</div>`;
-            html += `</div>`;
+              displayName = soupName + soupSize + (language === 'lt' ? ' ir ' : ' and ') + mainDishName;
+            } else if (option.main_dish) { displayName = language === 'lt' ? option.main_dish.name_lt : option.main_dish.name_en; }
+            else if (option.soup) { displayName = language === 'lt' ? option.soup.name_lt : option.soup.name_en; }
+            else { displayName = language === 'lt' ? complex.name_lt : complex.name_en; }
+            html += `<div class="complex-item"><div class="complex-item-header"><div class="complex-item-name">${escapeHtml(displayName)}</div><div class="complex-item-price">${formatPrice(complex.price)}</div></div></div>`;
           });
         });
-        
         html += `</div>`;
       }
-      
       html += `</div>`;
       return html;
     }
     
-    // Render menu from API data
-    // List page returns: { menus: DailyMenu[], start_date, end_date }
-    // Date page returns: { date, published, categories, complexes } (single object)
     function renderMenu(data) {
       const container = document.getElementById('menu-container');
       if (!container) return;
-      
       container.className = '';
-      let html = '';
-      let hasValidMenus = false;
-      
-      // Handle list page format: { menus: [...] }
+      let html = '', hasValidMenus = false;
       if (data.menus && Array.isArray(data.menus)) {
-        data.menus.forEach(menuData => {
-          const menuHtml = renderSingleMenu(menuData);
-          if (menuHtml) {
-            html += menuHtml;
-            hasValidMenus = true;
-          }
-        });
+        data.menus.forEach(menuData => { const menuHtml = renderSingleMenu(menuData); if (menuHtml) { html += menuHtml; hasValidMenus = true; } });
+      } else if (data.date && (data.categories || data.complexes)) {
+        const menuHtml = renderSingleMenu(data); if (menuHtml) { html += menuHtml; hasValidMenus = true; }
       }
-      // Handle date page format: single menu object
-      else if (data.date && (data.categories || data.complexes)) {
-        const menuHtml = renderSingleMenu(data);
-        if (menuHtml) {
-          html += menuHtml;
-          hasValidMenus = true;
-        }
-      }
-      
-      if (!hasValidMenus || html === '') {
-        container.className = 'error-message';
-        container.textContent = language === 'lt' ? 'Meniu nėra prieinamas' : 'Menu not available';
-      } else {
-        container.innerHTML = html;
-      }
+      if (!hasValidMenus || html === '') { container.className = 'error-message'; container.textContent = language === 'lt' ? 'Meniu nėra prieinamas' : 'Menu not available'; }
+      else { container.innerHTML = html; }
     }
     
-    
-    // Fetch menu data from API
     async function fetchMenu() {
       try {
-        // Log the API URL being requested (for verification in network tab)
-        console.log('Fetching menu from:', API_URL);
-        
-        const response = await fetch(API_URL, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-          },
-          mode: 'cors',
-        });
-        
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-        
+        const response = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' }, mode: 'cors' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        
-        // Validate response structure
-        // Expected: { menus: DailyMenu[] } for list page OR single menu object for date page
-        if (typeof data !== 'object' || data === null) {
-          throw new Error('Invalid response format: not an object');
-        }
-        
-        // Render menus (handles both list and single-day formats)
+        if (typeof data !== 'object' || data === null) throw new Error('Invalid response');
         renderMenu(data);
       } catch (error) {
         console.error('Failed to fetch menu:', error);
-        console.error('API URL:', API_URL);
         const container = document.getElementById('menu-container');
-        if (container) {
-          container.className = 'error-message';
-          container.textContent = language === 'lt' ? 'Meniu nėra prieinamas' : 'Menu not available';
-        }
+        if (container) { container.className = 'error-message'; container.textContent = language === 'lt' ? 'Meniu nėra prieinamas' : 'Menu not available'; }
       }
     }
     
-    // Start polling
-    function startPolling() {
-      // Fetch immediately
-      fetchMenu();
-      
-      // Then poll every 15 seconds
-      pollTimer = setInterval(fetchMenu, POLL_INTERVAL);
-    }
-    
-    // Stop polling (cleanup)
-    function stopPolling() {
-      if (pollTimer) {
-        clearInterval(pollTimer);
-        pollTimer = null;
-      }
-    }
-    
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', startPolling);
-    } else {
-      startPolling();
-    }
-    
-    // Cleanup on page unload
+    function startPolling() { fetchMenu(); pollTimer = setInterval(fetchMenu, POLL_INTERVAL); }
+    function stopPolling() { if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', startPolling); } else { startPolling(); }
     window.addEventListener('beforeunload', stopPolling);
   </script>
 </body>
