@@ -1,0 +1,217 @@
+{
+  "en": [
+    {
+      "day": "Monday",
+      "date": "2024-01-01",
+      "dishes": [
+        {
+          "name": "Creamy Mushroom Soup",
+          "description": "Rich cream soup with forest mushrooms and fresh herbs",
+          "price": "€6.50"
+        },
+        {
+          "name": "Grilled Chicken with Vegetables",
+          "description": "Tender chicken breast with seasonal roasted vegetables",
+          "price": "€12.90"
+        },
+        {
+          "name": "Chocolate Mousse",
+          "description": "Light and airy chocolate dessert",
+          "price": "€4.50"
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "date": "2024-01-02",
+      "dishes": [
+        {
+          "name": "Tomato Basil Soup",
+          "description": "Classic tomato soup with fresh basil and croutons",
+          "price": "€5.90"
+        },
+        {
+          "name": "Salmon with Dill Sauce",
+          "description": "Pan-seared salmon fillet with creamy dill sauce and potatoes",
+          "price": "€15.90"
+        },
+        {
+          "name": "Apple Pie",
+          "description": "Warm apple pie with vanilla ice cream",
+          "price": "€5.50"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "date": "2024-01-03",
+      "dishes": [
+        {
+          "name": "Vegetable Minestrone",
+          "description": "Italian vegetable soup with pasta and parmesan",
+          "price": "€6.20"
+        },
+        {
+          "name": "Beef Stroganoff",
+          "description": "Tender beef strips in creamy sauce with rice",
+          "price": "€13.50"
+        },
+        {
+          "name": "Tiramisu",
+          "description": "Classic Italian coffee-flavored dessert",
+          "price": "€5.90"
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "date": "2024-01-04",
+      "dishes": [
+        {
+          "name": "Butternut Squash Soup",
+          "description": "Smooth butternut squash soup with pumpkin seeds",
+          "price": "€6.50"
+        },
+        {
+          "name": "Pork Schnitzel",
+          "description": "Crispy breaded pork cutlet with mashed potatoes",
+          "price": "€11.90"
+        },
+        {
+          "name": "Panna Cotta",
+          "description": "Vanilla panna cotta with berry compote",
+          "price": "€4.90"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "date": "2024-01-05",
+      "dishes": [
+        {
+          "name": "Fish Chowder",
+          "description": "Hearty seafood chowder with fresh fish and vegetables",
+          "price": "€7.50"
+        },
+        {
+          "name": "Vegetarian Lasagna",
+          "description": "Layered pasta with vegetables, cheese and tomato sauce",
+          "price": "€12.50"
+        },
+        {
+          "name": "Lemon Tart",
+          "description": "Tangy lemon tart with meringue",
+          "price": "€5.20"
+        }
+      ]
+    }
+  ],
+  "lt": [
+    {
+      "day": "Pirmadienis",
+      "date": "2024-01-01",
+      "dishes": [
+        {
+          "name": "Kreminė grybų sriuba",
+          "description": "Turtinga grietinės sriuba su miško grybais ir šviežiomis žolelėmis",
+          "price": "€6.50"
+        },
+        {
+          "name": "Keptos vištienos su daržovėmis",
+          "description": "Traški vištienos krūtinėlė su sezoninėmis keptomis daržovėmis",
+          "price": "€12.90"
+        },
+        {
+          "name": "Šokolado musas",
+          "description": "Lengvas ir oro šokolado desertas",
+          "price": "€4.50"
+        }
+      ]
+    },
+    {
+      "day": "Antradienis",
+      "date": "2024-01-02",
+      "dishes": [
+        {
+          "name": "Pomidorų bazilikų sriuba",
+          "description": "Klasikinė pomidorų sriuba su šviežiu baziliku ir skrebučiais",
+          "price": "€5.90"
+        },
+        {
+          "name": "Lašiša su krapų padažu",
+          "description": "Keptų lašišos filė su kreminiu krapų padažu ir bulvėmis",
+          "price": "€15.90"
+        },
+        {
+          "name": "Obuolių pyragas",
+          "description": "Šiltas obuolių pyragas su vaniliniu ledais",
+          "price": "€5.50"
+        }
+      ]
+    },
+    {
+      "day": "Trečiadienis",
+      "date": "2024-01-03",
+      "dishes": [
+        {
+          "name": "Daržovių minestrone",
+          "description": "Itališka daržovių sriuba su makaronais ir parmezanu",
+          "price": "€6.20"
+        },
+        {
+          "name": "Jautienos Strogonovas",
+          "description": "Trūškos jautienos juostelės kreminiame padaže su ryžiais",
+          "price": "€13.50"
+        },
+        {
+          "name": "Tiramisu",
+          "description": "Klasikinis italų kavos skonio desertas",
+          "price": "€5.90"
+        }
+      ]
+    },
+    {
+      "day": "Ketvirtadienis",
+      "date": "2024-01-04",
+      "dishes": [
+        {
+          "name": "Moliūgų sriuba",
+          "description": "Lygi moliūgų sriuba su moliūgų sėklomis",
+          "price": "€6.50"
+        },
+        {
+          "name": "Kiaulienos šnicelis",
+          "description": "Traškus kiaulienos kepsnys su bulvių koše",
+          "price": "€11.90"
+        },
+        {
+          "name": "Panna Cotta",
+          "description": "Vanilinio panna cotta su uogienės kompostu",
+          "price": "€4.90"
+        }
+      ]
+    },
+    {
+      "day": "Penktadienis",
+      "date": "2024-01-05",
+      "dishes": [
+        {
+          "name": "Žuvies troškinys",
+          "description": "Sotus jūros gėrybių troškinys su šviežia žuvimi ir daržovėmis",
+          "price": "€7.50"
+        },
+        {
+          "name": "Vegetariška lazanija",
+          "description": "Sluoksniuoti makaronai su daržovėmis, sūriu ir pomidorų padažu",
+          "price": "€12.50"
+        },
+        {
+          "name": "Citrinų tarta",
+          "description": "Rūgšti citrinų tarta su bezė",
+          "price": "€5.20"
+        }
+      ]
+    }
+  ]
+}
+

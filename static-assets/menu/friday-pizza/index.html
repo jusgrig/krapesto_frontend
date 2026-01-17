@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Friday pizza menu at Krapesto restaurant.">
+  <title>Penktadienio picų meniu - Krapesto</title>
+  <link rel="icon" href="../../public/favicon-k.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="../../" class="logo">Krapesto</a>
+      <nav class="desktop-nav">
+        <a href="../../">Pradinis</a>
+        <a href="../../about/">Apie mus</a>
+        <div class="dropdown">
+          <button class="dropdown-toggle" data-dropdown-toggle="menu-dropdown">Meniu</button>
+          <div id="menu-dropdown" class="dropdown-menu hidden" data-dropdown>
+            <a href="../daily-lunch/">Dienos pietų meniu</a>
+            <a href="./">Penktadienio picų meniu</a>
+            <a href="../drinks/">Gėrimai</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-toggle" data-dropdown-toggle="events-dropdown">Renginiai</button>
+          <div id="events-dropdown" class="dropdown-menu hidden" data-dropdown>
+            <a href="../../events/pizza-education/">Picų kepimo edukacija</a>
+            <a href="../../events/cocktail-degustation/">Kokteilių degustacija</a>
+            <a href="../../events/kids-birthdays/">Vaikų gimtadieniai</a>
+            <a href="../../events/family-events/">Šeimos renginiai</a>
+            <a href="../../events/eat-as-much-as-you-can/">Valgyk kiek telpa</a>
+          </div>
+        </div>
+        <a href="../../gallery/">Galerija</a>
+        <a href="../../contact/">Kontaktai</a>
+      </nav>
+      <div class="header-right">
+        <a href="../../../en/menu/friday-pizza/" style="padding: 0.5rem 0.75rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; color: var(--text-color);">EN</a>
+        <button id="mobile-menu-button" class="mobile-menu-button">☰</button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <button id="mobile-menu-close">×</button>
+      <nav class="mobile-nav">
+        <a href="../../">Pradinis</a>
+        <a href="../../about/">Apie mus</a>
+        <div class="mobile-menu-section">
+          <span>Meniu</span>
+          <a href="../daily-lunch/">Dienos pietų meniu</a>
+          <a href="./">Penktadienio picų meniu</a>
+          <a href="../drinks/">Gėrimai</a>
+        </div>
+        <div class="mobile-menu-section">
+          <span>Renginiai</span>
+          <a href="../../events/pizza-education/">Picų kepimo edukacija</a>
+          <a href="../../events/cocktail-degustation/">Kokteilių degustacija</a>
+          <a href="../../events/kids-birthdays/">Vaikų gimtadieniai</a>
+          <a href="../../events/family-events/">Šeimos renginiai</a>
+          <a href="../../events/eat-as-much-as-you-can/">Valgyk kiek telpa</a>
+        </div>
+        <a href="../../gallery/">Galerija</a>
+        <a href="../../contact/">Kontaktai</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="min-height: 40vh;">
+      <div class="hero-bg">
+        <img src="../../images/hero/meniu/friday-pizza.jpg" alt="Pizza">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Penktadienio picų meniu</h1>
+      </div>
+    </section>
+
+    <section class="section bg-white">
+      <div class="container" style="max-width: 800px;">
+        <div class="menu-day">
+          <h3 class="menu-day-title">Nepamirštamo skonio neapolietiškos picos</h3>
+          <p style="color: red; margin-top: 1rem; margin-bottom: 2rem;">Akcija - penktadieniais dienos pietų metu visų picų kaina po 8,00 Eur. Skanaus!</p>
+          <style>
+            @media (max-width: 640px) {
+              .menu-item {
+                flex-direction: column !important;
+              }
+              .menu-item img {
+                width: 100% !important;
+                height: 200px !important;
+              }
+            }
+          </style>
+          <div class="menu-items">
+            <div class="menu-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+              <img src="../../images/Pizza/dvarcionys_hunger.png" alt="Dvarčionių Alkis" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0;">
+              <div style="flex: 1;">
+                <div class="menu-item-header">
+                  <h4 class="menu-item-name">Dvarčionių Alkis</h4>
+                  <span class="menu-item-price">€12.00</span>
+                </div>
+                <p class="menu-item-description">Trinti itališki pomidorai, lėtai kepta plėšyta kiauliena, peperoni dešra, grill svogūnai, grill ananasai, jelapenas, nduja dešra, mocarela sūris, permezano sūris, hamburgo padažas</p>
+              </div>
+            </div>
+            <div class="menu-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+              <img src="../../images/Pizza/Hawaiian.png" alt="Havajų" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0;">
+              <div style="flex: 1;">
+                <div class="menu-item-header">
+                  <h4 class="menu-item-name">Havajų</h4>
+                  <span class="menu-item-price">€12.00</span>
+                </div>
+                <p class="menu-item-description">Trinti itališki pomidorai, vištiena, grill ananasai, prosciuto kumpis, jelapenas, mocarela sūris, permezano sūris</p>
+              </div>
+            </div>
+            <div class="menu-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+              <img src="../../images/Pizza/Margherita.png" alt="Margarita" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0;">
+              <div style="flex: 1;">
+                <div class="menu-item-header">
+                  <h4 class="menu-item-name">Margarita</h4>
+                  <span class="menu-item-price">€12.00</span>
+                </div>
+                <p class="menu-item-description">Trinti itališki pomidorai, bazilikas, mocarela sūris, permezano sūris</p>
+              </div>
+            </div>
+            <div class="menu-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+              <img src="../../images/Pizza/Pepperoni.png" alt="Pepperoni" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0;">
+              <div style="flex: 1;">
+                <div class="menu-item-header">
+                  <h4 class="menu-item-name">Pepperoni</h4>
+                  <span class="menu-item-price">€12.00</span>
+                </div>
+                <p class="menu-item-description">Trinti itališki pomidorai, bazilikas, pepperoni dešra, mocarela sūris, permezano sūris</p>
+              </div>
+            </div>
+            <div class="menu-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+              <img src="../../images/Pizza/Prosciutto.png" alt="Prosciuto" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0;">
+              <div style="flex: 1;">
+                <div class="menu-item-header">
+                  <h4 class="menu-item-name">Prosciuto</h4>
+                  <span class="menu-item-price">€12.00</span>
+                </div>
+                <p class="menu-item-description">Trinti itališki pomidorai, mocarela sūris, rukola, prosciuto kumpis, cherry pomidorai, permezano sūris, balzamiko kremas</p>
+              </div>
+            </div>
+            <div class="menu-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+              <img src="../../images/Pizza/With Chicken.png" alt="Su Vištiena" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0;">
+              <div style="flex: 1;">
+                <div class="menu-item-header">
+                  <h4 class="menu-item-name">Su Vištiena</h4>
+                  <span class="menu-item-price">€12.00</span>
+                </div>
+                <p class="menu-item-description">Trinti itališki pomidorai, vištiena, pievagrybiai, permezano sūris, rukola</p>
+              </div>
+            </div>
+            <div class="menu-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+              <img src="../../images/Pizza/Crispy.png" alt="Traškioji" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0;">
+              <div style="flex: 1;">
+                <div class="menu-item-header">
+                  <h4 class="menu-item-name">Traškioji</h4>
+                  <span class="menu-item-price">€12.00</span>
+                </div>
+                <p class="menu-item-description">Trinti itališki pomidorai, vištiena, kepta šoninė, mocarela sūris, permezano sūris, panko pabarstukai, čipotlės padažas</p>
+              </div>
+            </div>
+            <div class="menu-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+              <img src="../../images/Pizza/To Hell with Diet.png" alt="Velniop Dietą" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0;">
+              <div style="flex: 1;">
+                <div class="menu-item-header">
+                  <h4 class="menu-item-name">Velniop Dietą</h4>
+                  <span class="menu-item-price">€12.00</span>
+                </div>
+                <p class="menu-item-description">Trinti itališki pomidorai, lėtai kepta plėšyta kiauliena, svogūnai, čederio sūris, marinuoti agurkai, skarmoza sūris, mocarela sūris, permezano sūris, cherry pomidorai, jelapenas, hamburgo padažas</p>
+              </div>
+            </div>
+            <div class="menu-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+              <img src="../../images/Pizza/Kitchen King.png" alt="Virtuvės Karalius" style="width: 150px; height: 150px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0;">
+              <div style="flex: 1;">
+                <div class="menu-item-header">
+                  <h4 class="menu-item-name">Virtuvės Karalius</h4>
+                  <span class="menu-item-price">€12.00</span>
+                </div>
+                <p class="menu-item-description">Trinti itališki pomidorai, šoninė, kumpis, grill svogūnai, čederio sūris, paprika, mocarela sūris, permezano sūris, čipotlės padažas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h3 class="footer-title">Krapesto</h3>
+        <p style="font-size: 0.875rem; color: var(--text-muted);">Šeimos restoranas</p>
+      </div>
+      <div>
+        <h4 class="footer-title" style="font-size: 1.125rem;">Nuorodos</h4>
+        <ul class="footer-links">
+          <li><a href="../../about/">Apie mus</a></li>
+          <li><a href="../">Meniu</a></li>
+          <li><a href="../../gallery/">Galerija</a></li>
+          <li><a href="../../contact/">Kontaktai</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title" style="font-size: 1.125rem;">Kontaktai</h4>
+        <div class="footer-contact">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.25rem; height: 1.25rem;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <span>Keramikų 2, LT-10232, Vilnius, Lietuva</span>
+        </div>
+        <div class="footer-contact">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.25rem; height: 1.25rem;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+          </svg>
+          <a href="tel:+37064557261">+370 645 57261</a>
+        </div>
+        <div class="footer-contact">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.25rem; height: 1.25rem;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          <a href="mailto:info@krapesto.lt">info@krapesto.lt</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="current-year"></span> Krapesto. Visos teisės saugomos.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

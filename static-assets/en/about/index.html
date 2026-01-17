@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Krapesto</title>
+  <link rel="icon" href="../public/favicon-k.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="../" class="logo">Krapesto</a>
+      <nav class="desktop-nav">
+        <a href="../">Welcome</a>
+        <a href="./">About Us</a>
+        <div class="dropdown">
+          <button class="dropdown-toggle" data-dropdown-toggle="menu-dropdown">Menu</button>
+          <div id="menu-dropdown" class="dropdown-menu hidden" data-dropdown>
+            <a href="../menu/daily-lunch/">Daily Lunch Menu</a>
+            <a href="../menu/friday-pizza/">Friday Pizza Menu</a>
+            <a href="../menu/drinks/">Drinks</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-toggle" data-dropdown-toggle="events-dropdown">Events</button>
+          <div id="events-dropdown" class="dropdown-menu hidden" data-dropdown>
+            <a href="../events/pizza-education/">Pizza Education</a>
+            <a href="../events/cocktail-degustation/">Cocktail Degustation</a>
+            <a href="../events/kids-birthdays/">Kids' Birthdays</a>
+            <a href="../events/family-events/">Family Events</a>
+            <a href="../events/eat-as-much-as-you-can/">Eat as Much as You Can</a>
+          </div>
+        </div>
+        <a href="../gallery/">Gallery</a>
+        <a href="../contact/">Contact</a>
+      </nav>
+      <div class="header-right">
+        <a href="../../about/" style="padding: 0.5rem 0.75rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; color: var(--text-color);">LT</a>
+        <button id="mobile-menu-button" class="mobile-menu-button">☰</button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <button id="mobile-menu-close">×</button>
+      <nav class="mobile-nav">
+        <a href="../">Welcome</a>
+        <a href="./">About Us</a>
+        <div class="mobile-menu-section"><span>Menu</span><a href="../menu/daily-lunch/">Daily Lunch Menu</a><a href="../menu/friday-pizza/">Friday Pizza Menu</a><a href="../menu/drinks/">Drinks</a></div>
+        <div class="mobile-menu-section"><span>Events</span><a href="../events/pizza-education/">Pizza Education</a><a href="../events/cocktail-degustation/">Cocktail Degustation</a><a href="../events/kids-birthdays/">Kids' Birthdays</a><a href="../events/family-events/">Family Events</a><a href="../events/eat-as-much-as-you-can/">Eat as Much as You Can</a></div>
+        <a href="../gallery/">Gallery</a>
+        <a href="../contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="min-height: 40vh;">
+      <div class="hero-bg">
+        <img src="../../images/hero/about.jpg" alt="About Krapesto">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>About Krapesto</h1>
+        <p>A restaurant driven by passion — for your daily lunch and your special celebrations.</p>
+      </div>
+    </section>
+
+    <section class="section bg-white">
+      <div class="container" style="max-width: 800px;">
+        <div style="line-height: 1.8; color: var(--text-muted); font-size: 1.125rem;">
+          <p style="margin-bottom: 2rem;">Krapesto is more than just a restaurant – it's a place where families gather to create lasting memories over delicious meals.</p>
+          <p style="margin-bottom: 2rem;">We believe in using only the finest, freshest ingredients to craft dishes that bring smiles to faces young and old. Our warm, welcoming atmosphere is designed to make every guest feel at home.</p>
+          <p>Whether you're celebrating a special occasion or simply enjoying a meal together, Krapesto is here to serve you with care, quality, and heart.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-gray-50">
+      <div class="container">
+        <h2 class="section-title">Our Values</h2>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1152px; margin: 0 auto;">
+          <div class="card"><div class="card-content text-center"><h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Quality Ingredients</h3><p style="color: var(--text-muted);">We source the freshest local ingredients for every dish</p></div></div>
+          <div class="card"><div class="card-content text-center"><h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Family-Friendly</h3><p style="color: var(--text-muted);">A welcoming space where children and parents both feel at home</p></div></div>
+          <div class="card"><div class="card-content text-center"><h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Warm Atmosphere</h3><p style="color: var(--text-muted);">Creating comfortable moments for families to connect</p></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div><h3 class="footer-title">Krapesto</h3><p style="font-size: 0.875rem; color: var(--text-muted);">A family restaurant</p></div>
+      <div><h4 class="footer-title" style="font-size: 1.125rem;">Quick Links</h4><ul class="footer-links"><li><a href="./">About Us</a></li><li><a href="../menu/">Menu</a></li><li><a href="../gallery/">Gallery</a></li><li><a href="../contact/">Contact</a></li></ul></div>
+      <div><h4 class="footer-title" style="font-size: 1.125rem;">Contact</h4><div class="footer-contact"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.25rem; height: 1.25rem;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span>Keramikų 2, LT-10232, Vilnius, Lithuania</span></div><div class="footer-contact"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.25rem; height: 1.25rem;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg><a href="tel:+37064557261">+370 645 57261</a></div><div class="footer-contact"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.25rem; height: 1.25rem;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg><a href="mailto:info@krapesto.lt">info@krapesto.lt</a></div></div>
+    </div>
+    <div class="footer-bottom"><p>© <span id="current-year"></span> Krapesto. All rights reserved.</p></div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+

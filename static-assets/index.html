@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Where families come together for delicious meals and lasting memories. Daily lunch menu, authentic Neapolitan pizza, and family events in Vilnius, Lithuania.">
+  <title>Krapesto - Family Restaurant</title>
+  <link rel="icon" href="public/favicon-k.svg" type="image/svg+xml">
+  <link rel="icon" href="public/favicon-k-32x32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="public/apple-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <a href="./" class="logo">Krapesto</a>
+      <nav class="desktop-nav">
+        <a href="./">Pradinis</a>
+        <a href="about/">Apie mus</a>
+        <div class="dropdown">
+          <button class="dropdown-toggle" data-dropdown-toggle="menu-dropdown">Meniu</button>
+          <div id="menu-dropdown" class="dropdown-menu hidden" data-dropdown>
+            <a href="menu/daily-lunch/">Dienos pietų meniu</a>
+            <a href="menu/friday-pizza/">Penktadienio picų meniu</a>
+            <a href="menu/drinks/">Gėrimai</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-toggle" data-dropdown-toggle="events-dropdown">Renginiai</button>
+          <div id="events-dropdown" class="dropdown-menu hidden" data-dropdown>
+            <a href="events/pizza-education/">Picų kepimo edukacija</a>
+            <a href="events/cocktail-degustation/">Kokteilių degustacija</a>
+            <a href="events/kids-birthdays/">Vaikų gimtadieniai</a>
+            <a href="events/family-events/">Šeimos renginiai</a>
+            <a href="events/eat-as-much-as-you-can/">Valgyk kiek telpa</a>
+          </div>
+        </div>
+        <a href="gallery/">Galerija</a>
+        <a href="contact/">Kontaktai</a>
+      </nav>
+      <div class="header-right">
+        <a href="en/" style="padding: 0.5rem 0.75rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; color: var(--text-color);">EN</a>
+        <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">×</button>
+      <nav class="mobile-nav">
+        <a href="./">Pradinis</a>
+        <a href="about/">Apie mus</a>
+        <div class="mobile-menu-section">
+          <span>Meniu</span>
+          <a href="menu/daily-lunch/">Dienos pietų meniu</a>
+          <a href="menu/friday-pizza/">Penktadienio picų meniu</a>
+          <a href="menu/drinks/">Gėrimai</a>
+        </div>
+        <div class="mobile-menu-section">
+          <span>Renginiai</span>
+          <a href="events/pizza-education/">Picų kepimo edukacija</a>
+          <a href="events/cocktail-degustation/">Kokteilių degustacija</a>
+          <a href="events/kids-birthdays/">Vaikų gimtadieniai</a>
+          <a href="events/family-events/">Šeimos renginiai</a>
+          <a href="events/eat-as-much-as-you-can/">Valgyk kiek telpa</a>
+        </div>
+        <a href="gallery/">Galerija</a>
+        <a href="contact/">Kontaktai</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 40vh;">
+      <div class="hero-bg">
+        <img src="images/hero/index.jpg" alt="Krapesto Restaurant Interior">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Sveiki atvykę į Krapesto</h1>
+        <p>Kur šeimos susiburia kartu</p>
+        <p style="font-size: 1.125rem; max-width: 42rem; margin: 0 auto;">Patirkite šiltą svetingumą, skanų maistą ir prisiminimus, kurie išlieka visą gyvenimą</p>
+        <div style="margin-top: 2rem;">
+          <a href="menu/" class="btn btn-primary">Žiūrėti meniu</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section bg-white">
+      <div class="container">
+        <div class="text-center mb-8">
+          <h2 class="section-title">Mūsų vertybės</h2>
+          <div style="width: 96px; height: 4px; background-color: var(--primary-color); margin: 0 auto; border-radius: 9999px;"></div>
+        </div>
+        <div class="grid grid-cols-1" style="max-width: 1152px; margin: 0 auto;">
+          <div class="card" style="margin-bottom: 2rem;">
+            <div class="card-content text-center">
+              <div style="width: 80px; height: 80px; border-radius: 1rem; background-color: rgba(4, 120, 87, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
+                <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--primary-color);">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+              </div>
+              <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.25rem;">Kokybiški produktai</h3>
+              <p style="color: var(--text-muted); line-height: 1.75;">Kiekvienam patiekalui renkame šviežiausius vietinius produktus</p>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom: 2rem;">
+            <div class="card-content text-center">
+              <div style="width: 80px; height: 80px; border-radius: 1rem; background-color: rgba(4, 120, 87, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
+                <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--primary-color);">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.25rem;">Šeimai draugiška</h3>
+              <p style="color: var(--text-muted); line-height: 1.75;">Svetinga erdvė, kur vaikai ir tėvai jaučiasi kaip namuose</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content text-center">
+              <div style="width: 80px; height: 80px; border-radius: 1rem; background-color: rgba(4, 120, 87, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
+                <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--primary-color);">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </div>
+              <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.25rem;">Šilta atmosfera</h3>
+              <p style="color: var(--text-muted); line-height: 1.75;">Kuriame jaukias akimirkas šeimoms susijungti</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background: linear-gradient(to bottom, #f9fafb, white); position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; opacity: 0.05; background-image: url('/images/wood-texture.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="container" style="position: relative; z-index: 10;">
+        <div class="text-center" style="max-width: 48rem; margin: 0 auto;">
+          <h2 class="section-title">Pasiruošę mums prisijungti?</h2>
+          <div style="width: 96px; height: 4px; background-color: var(--primary-color); margin: 0 auto 2rem; border-radius: 9999px;"></div>
+          <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 42rem; margin: 0 auto 2.5rem; line-height: 1.75;">
+            Patirkite Krapesto šilumą šiandien. Išnagrinėkite mūsų savaitės meniu.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+<div id="footer"></div>
+
+<script>
+fetch("/footer.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("footer").innerHTML = html;
+
+    const year = document.getElementById("current-year");
+    if (year) year.textContent = new Date().getFullYear();
+  })
+  .catch(err => console.error("Footer load error:", err));
+</script>
