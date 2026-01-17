@@ -1,0 +1,60 @@
+<header>
+  <div class="header-content">
+    <a href="{BASE}/" class="logo">Krapesto</a>
+    <nav class="desktop-nav">
+      <a href="{BASE}/">{NAV_HOME}</a>
+      <a href="{BASE}/about/">{NAV_ABOUT}</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle" data-dropdown-toggle="menu-dropdown">{NAV_MENU}</button>
+        <div id="menu-dropdown" class="dropdown-menu hidden" data-dropdown>
+          <a href="{BASE}/menu/daily-lunch/">{NAV_DAILY_LUNCH}</a>
+          <a href="{BASE}/menu/friday-pizza/">{NAV_FRIDAY_PIZZA}</a>
+          <a href="{BASE}/menu/drinks/">{NAV_DRINKS}</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-toggle" data-dropdown-toggle="events-dropdown">{NAV_EVENTS}</button>
+        <div id="events-dropdown" class="dropdown-menu hidden" data-dropdown>
+          <a href="{BASE}/events/pizza-education/">{NAV_PIZZA_EDUCATION}</a>
+          <a href="{BASE}/events/cocktail-degustation/">{NAV_COCKTAIL}</a>
+          <a href="{BASE}/events/kids-birthdays/">{NAV_KIDS_BIRTHDAYS}</a>
+          <a href="{BASE}/events/family-events/">{NAV_FAMILY_EVENTS}</a>
+          <a href="{BASE}/events/eat-as-much-as-you-can/">{NAV_EAT_ALL}</a>
+        </div>
+      </div>
+      <a href="{BASE}/gallery/">{NAV_GALLERY}</a>
+      <a href="{BASE}/contact/">{NAV_CONTACT}</a>
+    </nav>
+    <div class="header-right">
+      <a href="{LANG_SWITCH_HREF}" style="padding: 0.5rem 0.75rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; color: var(--text-color);">{LANG_SWITCH_TEXT}</a>
+      <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Toggle menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu hidden">
+    <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+    <nav class="mobile-nav">
+      <a href="{BASE}/">{NAV_HOME}</a>
+      <a href="{BASE}/about/">{NAV_ABOUT}</a>
+      <div class="mobile-menu-section">
+        <span>{NAV_MENU}</span>
+        <a href="{BASE}/menu/daily-lunch/">{NAV_DAILY_LUNCH}</a>
+        <a href="{BASE}/menu/friday-pizza/">{NAV_FRIDAY_PIZZA}</a>
+        <a href="{BASE}/menu/drinks/">{NAV_DRINKS}</a>
+      </div>
+      <div class="mobile-menu-section">
+        <span>{NAV_EVENTS}</span>
+        <a href="{BASE}/events/pizza-education/">{NAV_PIZZA_EDUCATION}</a>
+        <a href="{BASE}/events/cocktail-degustation/">{NAV_COCKTAIL}</a>
+        <a href="{BASE}/events/kids-birthdays/">{NAV_KIDS_BIRTHDAYS}</a>
+        <a href="{BASE}/events/family-events/">{NAV_FAMILY_EVENTS}</a>
+        <a href="{BASE}/events/eat-as-much-as-you-can/">{NAV_EAT_ALL}</a>
+      </div>
+      <a href="{BASE}/gallery/">{NAV_GALLERY}</a>
+      <a href="{BASE}/contact/">{NAV_CONTACT}</a>
+    </nav>
+  </div>
+</header>
