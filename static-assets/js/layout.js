@@ -289,6 +289,9 @@
     }
   };
 
+  /**
+   * Generates localized link for language switcher
+   */
   function getLangSwitchHref() {
     if (isEnglish) {
       return currentPath.replace(/^\/en\/?/, '/') || '/';
@@ -297,6 +300,9 @@
     }
   }
 
+  /**
+   * Replaces placeholders in HTML with actual values
+   */
   function replaceTemplateVars(html, vars) {
     let result = html;
     for (const [key, value] of Object.entries(vars)) {
@@ -305,6 +311,9 @@
     return result;
   }
 
+  /**
+   * Fetches HTML template from the server
+   */
   async function loadTemplate(url) {
     try {
       const response = await fetch(url);
@@ -316,6 +325,9 @@
     }
   }
 
+  /**
+   * Loads and renders the navigation header
+   */
   async function loadHeader() {
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (!headerPlaceholder) return;
@@ -333,6 +345,9 @@
     headerPlaceholder.innerHTML = replaceTemplateVars(html, vars);
   }
 
+  /**
+   * Loads and renders the footer
+   */
   async function loadFooter() {
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (!footerPlaceholder) return;
@@ -347,6 +362,9 @@
     }
   }
 
+  /**
+   * Loads and renders the hero section based on data-hero attribute
+   */
   async function loadHero() {
     const heroPlaceholder = document.getElementById('hero-placeholder');
     if (!heroPlaceholder) return;
@@ -368,6 +386,9 @@
     heroPlaceholder.innerHTML = replaceTemplateVars(html, vars);
   }
 
+  /**
+   * Initializes the layout by loading all components sequentially
+   */
   async function initLayout() {
     await Promise.all([
       loadHeader(),
@@ -375,17 +396,17 @@
       loadHero()
     ]);
 
+    // Check for main initialization function in main.js
     if (typeof window.initMain === 'function') {
       window.initMain();
-    } else {
-      const mainScript = document.querySelector('script[src*="main.js"]');
-      if (mainScript) {
-        const event = new Event('DOMContentLoaded');
-        document.dispatchEvent(event);
-      }
     }
+    
+    // WARNING: Removed event redispatching that caused infinite loop
   }
 
+  /**
+   * Entry point for the layout script
+   */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initLayout);
   } else {
