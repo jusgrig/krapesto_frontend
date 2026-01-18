@@ -91,15 +91,34 @@
 
   // Define global init function to be called from layout.js
   window.initMain = function() {
+    // initialize mobile menu and language switcher
     initMobileMenu();
     initLanguageSwitcher();
-    initDropdowns();
+
+    // Dropdown handling: attach listeners to .dropdown-toggle (works after header is injected)
+    const dropdowns = document.querySelectorAll('.dropdown-toggle');
+    dropdowns.forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const menu = toggle.nextElementSibling;
+        // Close other menus first
+        document.querySelectorAll('.dropdown-menu').forEach(m => {
+          if (m !== menu) m.classList.add('hidden');
+        });
+        if (menu) menu.classList.toggle('hidden');
+      });
+    });
+
+    // Close menus when clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.add('hidden'));
+    });
   };
 
   // Keep auto-init for direct page loads without layout.js if needed
   if (document.readyState === 'complete') {
     window.initMain();
   } else {
-    window.addEventListener('load', window.initMain);
+    document.addEventListener('load', window.initMain);
   }
 })();

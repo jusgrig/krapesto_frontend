@@ -68,7 +68,8 @@
         height: '40vh',
         extra: ''
       },
-      'daily-lunch': {
+      // 'daily' key used for Daily Lunch page
+      'daily': {
         image: '/images/hero/meniu/meniu_dienos_pietus.jpg',
         alt: 'Daily Lunch',
         title: 'Dienos pietų meniu',
@@ -113,7 +114,7 @@
         alt: 'Pizza Education',
         title: 'Picų kepimo edukacija',
         subtitle: '',
-        height: '50vh',
+        height: '40vh',
         extra: ''
       },
       'cocktail-degustation': {
@@ -121,7 +122,7 @@
         alt: 'Cocktail Degustation',
         title: 'Kokteilių degustacijos patirtis',
         subtitle: '',
-        height: '50vh',
+        height: '40vh',
         extra: ''
       },
       'kids-birthdays': {
@@ -129,7 +130,7 @@
         alt: 'Kids Birthdays',
         title: 'Vaikų gimtadieniai',
         subtitle: '',
-        height: '50vh',
+        height: '40vh',
         extra: ''
       },
       'family-events': {
@@ -137,7 +138,7 @@
         alt: 'Family Events',
         title: 'Šeimos renginiai',
         subtitle: '',
-        height: '50vh',
+        height: '40vh',
         extra: ''
       },
       'eat-as-much-as-you-can': {
@@ -145,7 +146,7 @@
         alt: 'Eat as Much as You Can',
         title: 'Valgyk kiek telpa',
         subtitle: '',
-        height: '50vh',
+        height: '40vh',
         extra: ''
       },
       'day': {
@@ -190,8 +191,17 @@
         height: '40vh',
         extra: ''
       },
+      // 'daily' key used for Daily Lunch page
       'daily-lunch': {
-        image: '/images/hero/meniu/meniu_dienos_pietus.jpg',
+        image: '/images/hero/meniu/daily_lunch.jpg',
+        alt: 'Daily Lunch',
+        title: 'Daily Lunch Menu',
+        subtitle: 'Monday - Friday, 11:00 - 16:00',
+        height: '40vh',
+        extra: ''
+      },
+      'daily': {
+        image: '/images/hero/meniu/daily_lunch.jpg',
         alt: 'Daily Lunch',
         title: 'Daily Lunch Menu',
         subtitle: 'Monday - Friday, 11:00 - 16:00',
@@ -235,7 +245,7 @@
         alt: 'Pizza Education',
         title: 'Pizza Making Education',
         subtitle: '',
-        height: '50vh',
+        height: '40vh',
         extra: ''
       },
       'cocktail-degustation': {
@@ -243,7 +253,7 @@
         alt: 'Cocktail Degustation',
         title: 'Cocktail Degustation Experience',
         subtitle: '',
-        height: '50vh',
+        height: '40vh',
         extra: ''
       },
       'kids-birthdays': {
@@ -251,7 +261,7 @@
         alt: 'Kids Birthdays',
         title: "Kids' Birthdays",
         subtitle: '',
-        height: '50vh',
+        height: '40vh',
         extra: ''
       },
       'family-events': {
@@ -259,7 +269,7 @@
         alt: 'Family Events',
         title: 'Family Events',
         subtitle: '',
-        height: '50vh',
+        height: '40vh',
         extra: ''
       },
       'eat-as-much-as-you-can': {
@@ -267,7 +277,7 @@
         alt: 'Eat as Much as You Can',
         title: 'Eat as Much as You Can',
         subtitle: '',
-        height: '50vh',
+        height: '40vh',
         extra: ''
       },
       'day': {
@@ -362,16 +372,37 @@
     }
   }
 
+  // Return current language key used by heroData ('en' or 'lt')
+  function getCurrentLanguage() {
+    return isEnglish ? 'en' : 'lt';
+  }
+
   /**
-   * Loads and renders the hero section based on data-hero attribute
+   * Loads and renders the hero section.
+   * Determine the page key from data-hero attribute or infer from URL path.
+   * Use getCurrentLanguage() to select localized heroData.
+   * HERO_HEIGHT is enforced to '40vh' for consistent rendering.
    */
   async function loadHero() {
     const heroPlaceholder = document.getElementById('hero-placeholder');
     if (!heroPlaceholder) return;
 
-    const heroKey = document.body.getAttribute('data-hero') || 'home';
-    const lang = isEnglish ? 'en' : 'lt';
-    const data = heroData[lang][heroKey] || heroData[lang]['home'];
+    // Prefer explicit data-hero attribute, otherwise infer from the URL path
+    const pageAttr = document.body.getAttribute('data-hero');
+    let page = pageAttr && pageAttr.trim() ? pageAttr.trim() : null;
+
+    if (!page) {
+      // Derive from currentPath, remove basePath if present, then use last path segment
+      let path = currentPath || window.location.pathname || '/';
+      if (basePath && path.startsWith(basePath)) {
+        path = path.slice(basePath.length) || '/';
+      }
+      path = path.replace(/^\/|\/$/g, '');
+      page = path ? path.split('/').pop() : 'home';
+    }
+
+    const lang = getCurrentLanguage();
+    const data = (heroData[lang] && heroData[lang][page]) ? heroData[lang][page] : heroData[lang]['home'];
 
     const html = await loadTemplate('/hero.html');
     const vars = {
@@ -379,7 +410,7 @@
       HERO_ALT: data.alt,
       HERO_TITLE: data.title,
       HERO_SUBTITLE: data.subtitle || '',
-      HERO_HEIGHT: data.height || '40vh',
+      HERO_HEIGHT: '40vh', // Enforced uniform height
       HERO_EXTRA: data.extra || ''
     };
 
