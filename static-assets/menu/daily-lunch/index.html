@@ -53,8 +53,9 @@
   <script src="/js/layout.js"></script>
   <script src="/js/main.js"></script>
   <script>
-    const language = window.location.pathname.startsWith('/en') ? 'en' : 'lt';
-    const API_URL = 'http://57.128.249.100:8000/api/lunch-menu/week/';
+    const language =
+  new URLSearchParams(window.location.search).get('lang') || 'lt';
+    const API_URL = `http://57.128.249.100:8000/api/lunch-menu/week/?lang=${language}`;
     const POLL_INTERVAL = 15000;
     let pollTimer = null;
     
