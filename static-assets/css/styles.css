@@ -923,9 +923,4 @@
   border-radius: 0.5rem;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
-/* Viskas, kas jau sutvarkyta su i18n, turės žalią rėmelį */
-[data-i18n] {
-    outline: 2px solid #22c55e !important;
-}
 
-/* Viskas, kas neturi rėmelio, reiškia vis dar yra paprastas tekstas */

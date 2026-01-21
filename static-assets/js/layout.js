@@ -67,7 +67,7 @@
       // Ingredientai
       ING_TOMATO: 'Trinti itališki pomidorai',
       ING_MOZZARELLA: 'mocarela sūris',
-      ING_PARMSAN: 'permezano sūris', // palikta kaip faile; galima pataisyti į "parmezano"
+      ING_PARMSAN: 'parmezano sūris', // palikta kaip faile; galima pataisyti į "parmezano"
       ING_PORK: 'lėtai kepta plėšyta kiauliena',
       ING_PEPERONI: 'peperoni dešra',
       ING_GRILL_ONION: 'grill svogūnai',
@@ -132,7 +132,8 @@
     DURATION_LABEL: 'Trukmė:',
     DURATION_VAL: '2 valandos',
     ORDER_PHONE: 'Užsisakyti telefonu',
-    EDU_PAGE_TITLE: 'Picų kepimo edukacija',EAT_ALL_DESC_1: 'Prisijunkite prie mūsų kasmetinės šventės rugsėjo 1-ąją! Tai ypatingas renginys visai šeimai, skirtas smagiai pasitikti naujus mokslo metus. Mėgaukitės neribotu skaniu maistu ir kurkite gražius prisiminimus kartu su artimaisiais.',
+    EDU_PAGE_TITLE: 'Picų kepimo edukacija',
+    EAT_ALL_DESC_1: 'Prisijunkite prie mūsų kasmetinės šventės rugsėjo 1-ąją! Tai ypatingas renginys visai šeimai, skirtas smagiai pasitikti naujus mokslo metus. Mėgaukitės neribotu skaniu maistu ir kurkite gražius prisiminimus kartu su artimaisiais.',
 EAT_ALL_DESC_2: 'Sumokėję dienos mokestį galėsite ragauti maistą be apribojimų, o mažieji svečiai – ne tik skaniai pavalgyti, bet ir linksmai praleisti laiką pramogaudami.',
 EAT_ALL_STATS: 'Su kiekvienais metais lankytojų skaičius vis didėja ir didėja. 2025 metų rugsėjo 1-ąją mus aplankė beveik 400 lankytojų, todėl 2026-aisiais tikimės dar gausesnio būrio svečių, gero oro ir dar geresnės nuotaikos.',
 EAT_ALL_FUTURE: 'Nestovime vietoje – ruošiame dar skanesnį maistą ir dar įdomesnes pramogas jūsų vaikams. Tegul rugsėjo 1-oji tampa smagia švente visai šeimai!',
@@ -143,9 +144,20 @@ COCKTAIL_DESC_1: 'Atraskite miksologijos meną ir leiskitės į išskirtinę sko
 COCKTAIL_DESC_2: 'Šis renginys – tai ne tik kokteilių degustacija, bet ir pažintis su jų istorija, kilme bei subtilybėmis, kurios per šimtmečius formavo gėrimų kultūrą visame pasaulyje. Kiekvienas kokteilis pasakoja savo istoriją – nuo klasikinių receptų, gimusių XIX amžiaus baruose, iki modernių interpretacijų, atspindinčių šiandienos skonio tendencijas.',
 COCKTAIL_DESC_3: 'Vakaro metu dalyviai ragaus penkis profesionaliai paruoštus kokteilius, kruopščiai atrinktus taip, kad atskleistų skirtingus skonių profilius – nuo gaivių ir lengvų iki sodrių, brandžių bei kompleksiškų. Mūsų barmenas ne tik paruoš gėrimus, bet ir papasakos apie jų kilmę, naudojamus ingredientus, skonio balansą bei tai, kaip amžius, laikas ir kultūra daro įtaką kokteilių evoliucijai.',
 COCKTAIL_DESC_4: 'Tai – tik suaugusiesiems skirtas renginys, skirtas tiems, kurie vertina kokybę, estetiką ir nori patirti daugiau nei paprastą gėrimo ragavimą. Leiskite sau trumpam sustoti, atsipalaiduoti ir pasinerti į pasaulį, kuriame skonis, istorija ir atmosfera susilieja į vieną išskirtinę patirtį.',
-COCKTAIL_ADULTS_ONLY: 'Renginys skirtas tik suaugusiesiems (N-21).'
-    },
+COCKTAIL_ADULTS_ONLY: 'Renginys skirtas tik suaugusiesiems (N-21).',
+KIDS_BIRTHDAYS_NAME: 'Vaikų gimtadienių šventės',
+KIDS_BIRTHDAYS_DESC: 'Padarykite savo vaiko gimtadienį nepamirštamu su mūsų specialiomis vaikų gimtadienių šventėmis! Mūsų restoranas siūlo jaukią ir linksmą aplinką, kurioje jūsų mažyliai gali švęsti su draugais, mėgautis skaniu maistu ir dalyvauti įvairiose pramogose. Leiskite mums pasirūpinti viskuo – nuo dekoracijų iki maisto meniu, kad jūs galėtumėte atsipalaiduoti ir mėgautis švente kartu su savo vaiku.',
+KIDS_BIRTHDAYS_Audience: 'Vaikai nuo 3 metų amžiaus',
+FAMILY_EVENTS: 'Šeimos renginiai ir susibūrimai',
+FAMILY_EVENTS_DESC: 'Surenkite savo šeimos šventes su mumis! Nuo jubiliejų iki susitikimų, mes sukuriame tobulą atmosferą jūsų ypatingiems momentams.',
+FAMILY_EVENTS_AUDIENCE: 'Visos amžiaus grupės',
+FAMILY_EVENTS_DURATION: 'Pagal užsakymą'
+   },
+  
     en: {
+
+
+
       NAV_HOME: 'Welcome',
       NAV_MENU: 'Menu',
       NAV_DAILY_LUNCH: 'Daily Lunch Menu',
@@ -259,8 +271,14 @@ COCKTAIL_DESC_1: 'Discover the art of mixology and embark on an exclusive journe
 COCKTAIL_DESC_2: 'This event is not just a cocktail tasting, but an introduction to their history, origins, and the subtleties that have shaped the global beverage culture over centuries. Each cocktail tells its own story – from classic recipes born in 19th-century bars to modern interpretations reflecting today’s flavor trends.',
 COCKTAIL_DESC_3: 'During the evening, participants will taste five professionally prepared cocktails, carefully selected to reveal different flavor profiles – from fresh and light to rich, mature, and complex. Our bartender will not only prepare the drinks but also share stories about their origins, ingredients used, flavor balance, and how age, time, and culture influence the evolution of cocktails.',
 COCKTAIL_DESC_4: 'This is an adults-only event, designed for those who appreciate quality and aesthetics and want to experience more than just a simple tasting. Allow yourself to stop for a moment, relax, and immerse yourself in a world where taste, history, and atmosphere merge into one extraordinary experience.',
-COCKTAIL_ADULTS_ONLY: 'Adults only event (21+).'
-
+COCKTAIL_ADULTS_ONLY: 'Adults only event (21+).',
+KIDS_BIRTHDAYS_NAME: 'Children’s Birthday Parties',
+KIDS_BIRTHDAYS_DESC: 'Make your child’s birthday unforgettable! We take care of everything — from decorations and entertainment to delicious food.',
+KIDS_BIRTHDAYS_Audience: 'Children aged from 3 years',
+FAMILY_EVENTS: 'Family Events and Gatherings',
+FAMILY_EVENTS_DESC: 'Host your family celebrations with us! From anniversaries to get-togethers, we create the perfect atmosphere for your special moments.',
+FAMILY_EVENTS_AUDIENCE: 'All age groups',
+FAMILY_EVENTS_DURATION: 'By arrangement'
     }
   };
 
@@ -538,7 +556,6 @@ COCKTAIL_ADULTS_ONLY: 'Adults only event (21+).'
       return '';
     }
   }
-
   async function loadHeader() {
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (!headerPlaceholder) return;
