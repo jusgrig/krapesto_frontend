@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kokteilių degustacija - Krapesto</title>
+  <title data-i18n="NAV_COCKTAIL">Kokteilių degustacija - Krapesto</title>
   <link rel="icon" href="/public/favicon-k.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -17,15 +17,29 @@
       <div class="container" style="max-width: 800px;">
         <div class="card">
           <div class="card-content">
-            <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 1.5rem;">Kokteilių degustacijos patirtis</h2>
-            <div style="color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem;">
-              Atraskite mikso logijos meną su mūsų išskirtiniais kokteiliais. Renginys tik suaugusiems su 5 profesionaliai paruoštais gėrimais.
+            <h1 style="font-size: 2rem; font-weight: bold; margin-bottom: 1.5rem;" data-i18n="COCKTAIL_TITLE">
+              Miksologijos menas ir skonių kelionė
+            </h1>
+
+            <div style="color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; white-space: pre-line;">
+              <p style="font-weight: 600; margin-bottom: 1rem;" data-i18n="COCKTAIL_DESC_1">Atraskite miksologijos meną ir leiskitės į išskirtinę skonių kelionę.</p>
+              <p style="margin-bottom: 1rem;" data-i18n="COCKTAIL_DESC_2">Šis renginys – tai ne tik kokteilių degustacija, bet ir pažintis su jų istorija, kilme bei subtilybėmis, kurios per šimtmečius formavo gėrimų kultūrą visame pasaulyje. Kiekvienas kokteilis pasakoja savo istoriją – nuo klasikinių receptų, gimusių XIX amžiaus baruose, iki modernių interpretacijų, atspindinčių šiandienos skonio tendencijas.</p>
+              <p style="margin-bottom: 1rem;" data-i18n="COCKTAIL_DESC_3">Vakaro metu dalyviai ragaus penkis profesionaliai paruoštus kokteilius, kruopščiai atrinktus taip, kad atskleistų skirtingus skonių profilius – nuo gaivių ir lengvų iki sodrių, brandžių bei kompleksiškų. Mūsų barmenas ne tik paruoš gėrimus, bet ir papasakos apie jų kilmę, naudojamus ingredientus, skonio balansą bei tai, kaip amžius, laikas ir kultūra daro įtaką kokteilių evoliucijai.</p>
+              <p data-i18n="COCKTAIL_DESC_4">Tai – tik suaugusiesiems skirtas renginys, skirtas tiems, kurie vertina kokybę, estetiką ir nori patirti daugiau nei paprastą gėrimo ragavimą. Leiskite sau trumpam sustoti, atsipalaiduoti ir pasinerti į pasaulį, kuriame skonis, istorija ir atmosfera susilieja į vieną išskirtinę patirtį.</p>
             </div>
+
             <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem;">
-              <div><strong>Tikslinė auditorija:</strong> Suaugusiems nuo 21 metų</div>
-              <div><strong>Trukmė:</strong> 90 minučių</div>
+              <div>
+                <strong data-i18n="AUDIENCE_LABEL">Tikslinė auditorija:</strong> 
+                <span data-i18n="COCKTAIL_ADULTS_ONLY">Renginys skirtas tik suaugusiesiems (N-21)</span>
+              </div>
+              <div>
+                <strong data-i18n="DURATION_LABEL">Trukmė:</strong> 
+                <span data-i18n="DURATION_VAL">2 valandos</span>
+              </div>
             </div>
-            <a href="tel:+37064557261" class="btn btn-primary">Užsisakyti telefonu</a>
+
+            <a href="tel:+37064557261" class="btn btn-primary" data-i18n="ORDER_PHONE">Užsisakyti telefonu</a>
           </div>
         </div>
       </div>

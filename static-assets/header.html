@@ -1,32 +1,31 @@
 <header>
   <div class="header-content">
-    <a href="{BASE}/" class="logo">Krapesto</a>
+    <a href="/" class="logo">Krapesto</a>
     <nav class="desktop-nav">
-      <a href="{BASE}/">{NAV_HOME}</a>
-      <a href="{BASE}/about/">{NAV_ABOUT}</a>
+      <a href="/" data-i18n="NAV_HOME">Pradinis</a>
       <div class="dropdown">
-        <button class="dropdown-toggle" data-dropdown-toggle="menu-dropdown">{NAV_MENU}</button>
+        <button class="dropdown-toggle" data-dropdown-toggle="menu-dropdown" data-i18n="NAV_MENU">Meniu</button>
         <div id="menu-dropdown" class="dropdown-menu hidden" data-dropdown>
-          <a href="{BASE}/menu/daily-lunch/">{NAV_DAILY_LUNCH}</a>
-          <a href="{BASE}/menu/friday-pizza/">{NAV_FRIDAY_PIZZA}</a>
-          <a href="{BASE}/menu/drinks/">{NAV_DRINKS}</a>
+          <a href="/menu/daily-lunch/" data-i18n="NAV_DAILY_LUNCH">Dienos pietų meniu</a>
+          <a href="/menu/friday-pizza/" data-i18n="NAV_FRIDAY_PIZZA">Penktadienio picų meniu</a>
+          <a href="/menu/drinks/" data-i18n="NAV_DRINKS">Gėrimų meniu</a>
         </div>
       </div>
       <div class="dropdown">
-        <button class="dropdown-toggle" data-dropdown-toggle="events-dropdown">{NAV_EVENTS}</button>
+        <button class="dropdown-toggle" data-dropdown-toggle="events-dropdown" data-i18n="NAV_EVENTS">Renginiai</button>
         <div id="events-dropdown" class="dropdown-menu hidden" data-dropdown>
-          <a href="{BASE}/events/pizza-education/">{NAV_PIZZA_EDUCATION}</a>
-          <a href="{BASE}/events/cocktail-degustation/">{NAV_COCKTAIL}</a>
-          <a href="{BASE}/events/kids-birthdays/">{NAV_KIDS_BIRTHDAYS}</a>
-          <a href="{BASE}/events/family-events/">{NAV_FAMILY_EVENTS}</a>
-          <a href="{BASE}/events/eat-as-much-as-you-can/">{NAV_EAT_ALL}</a>
+          <a href="/events/pizza-education/" data-i18n="NAV_PIZZA_EDUCATION">Picų kepimo edukacija</a>
+          <a href="/events/cocktail-degustation/" data-i18n="NAV_COCKTAIL">Kokteilių degustacija</a>
+          <a href="/events/kids-birthdays/" data-i18n="NAV_KIDS_BIRTHDAYS">Vaikų gimtadieniai</a>
+          <a href="/events/family-events/" data-i18n="NAV_FAMILY_EVENTS">Šeimos renginiai</a>
+          <a href="/events/eat-as-much-as-you-can/" data-i18n="NAV_EAT_ALL">Valgyk kiek telpa</a>
         </div>
       </div>
-      <a href="{BASE}/gallery/">{NAV_GALLERY}</a>
-      <a href="{BASE}/contact/">{NAV_CONTACT}</a>
+      <a href="/gallery/" data-i18n="NAV_GALLERY">Galerija</a>
+      <a href="/contact/" data-i18n="NAV_CONTACT">Kontaktai</a>
     </nav>
     <div class="header-right">
-      <a href="{LANG_SWITCH_HREF}" style="padding: 0.5rem 0.75rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; color: var(--text-color);">{LANG_SWITCH_TEXT}</a>
+      <a id="lang-switch" href="#" style="padding: 0.5rem 0.75rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; color: var(--text-color);" data-i18n="LANG_SWITCH_TEXT">EN</a>
       <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Toggle menu">
         <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -34,27 +33,27 @@
       </button>
     </div>
   </div>
+
   <div id="mobile-menu" class="mobile-menu hidden">
     <button id="mobile-menu-close" class="mobile-menu-close">×</button>
     <nav class="mobile-nav">
-      <a href="{BASE}/">{NAV_HOME}</a>
-      <a href="{BASE}/about/">{NAV_ABOUT}</a>
+      <a href="/" data-i18n="NAV_HOME">Pradinis</a>
       <div class="mobile-menu-section">
-        <span>{NAV_MENU}</span>
-        <a href="{BASE}/menu/daily-lunch/">{NAV_DAILY_LUNCH}</a>
-        <a href="{BASE}/menu/friday-pizza/">{NAV_FRIDAY_PIZZA}</a>
-        <a href="{BASE}/menu/drinks/">{NAV_DRINKS}</a>
+        <span data-i18n="NAV_MENU">Meniu</span>
+        <a href="/menu/daily-lunch/" data-i18n="NAV_DAILY_LUNCH">Dienos pietų meniu</a>
+        <a href="/menu/friday-pizza/" data-i18n="NAV_FRIDAY_PIZZA">Penktadienio picų meniu</a>
+        <a href="/menu/drinks/" data-i18n="NAV_DRINKS">Gėrimų meniu</a>
       </div>
       <div class="mobile-menu-section">
-        <span>{NAV_EVENTS}</span>
-        <a href="{BASE}/events/pizza-education/">{NAV_PIZZA_EDUCATION}</a>
-        <a href="{BASE}/events/cocktail-degustation/">{NAV_COCKTAIL}</a>
-        <a href="{BASE}/events/kids-birthdays/">{NAV_KIDS_BIRTHDAYS}</a>
-        <a href="{BASE}/events/family-events/">{NAV_FAMILY_EVENTS}</a>
-        <a href="{BASE}/events/eat-as-much-as-you-can/">{NAV_EAT_ALL}</a>
+        <span data-i18n="NAV_EVENTS">Renginiai</span>
+        <a href="/events/pizza-education/" data-i18n="NAV_PIZZA_EDUCATION">Picų kepimo edukacija</a>
+        <a href="/events/cocktail-degustation/" data-i18n="NAV_COCKTAIL">Kokteilių degustacija</a>
+        <a href="/events/kids-birthdays/" data-i18n="NAV_KIDS_BIRTHDAYS">Vaikų gimtadieniai</a>
+        <a href="/events/family-events/" data-i18n="NAV_FAMILY_EVENTS">Šeimos renginiai</a>
+        <a href="/events/eat-as-much-as-you-can/" data-i18n="NAV_EAT_ALL">Valgyk kiek telpa</a>
       </div>
-      <a href="{BASE}/gallery/">{NAV_GALLERY}</a>
-      <a href="{BASE}/contact/">{NAV_CONTACT}</a>
+      <a href="/gallery/" data-i18n="NAV_GALLERY">Galerija</a>
+      <a href="/contact/" data-i18n="NAV_CONTACT">Kontaktai</a>
     </nav>
   </div>
 </header>

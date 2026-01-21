@@ -15,15 +15,15 @@
 
     <section class="section bg-gray-50">
       <div class="container">
-        <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
-          <img src="/images/hero/index.jpg" alt="Restaurant interior" style="width: 100%; border-radius: 1rem;">
-          <img src="/images/hero/meniu/menu.jpg" alt="Lunch plate" style="width: 100%; border-radius: 1rem;">
-          <img src="/images/hero/events/kids-birthdays.jpg" alt="Kids birthday" style="width: 100%; border-radius: 1rem;">
-          <img src="/images/hero/about.jpg" alt="Interior" style="width: 100%; border-radius: 1rem;">
-          <img src="/images/hero/gallery.jpg" alt="Food" style="width: 100%; border-radius: 1rem;">
-          <img src="/images/hero/events/family-events.jpg" alt="Family meal" style="width: 100%; border-radius: 1rem;">
-          <img src="/images/hero/events/pizza-education.jpg" alt="Pizza workshop" style="width: 100%; border-radius: 1rem;">
-          <img src="/images/hero/events/cocktail-degustation.jpg" alt="Cocktails" style="width: 100%; border-radius: 1rem;">
+        <div class="gallery-grid" style="display: grid; gap: 1.5rem;">
+          <img src="/images/hero/index.jpg" alt="Restaurant interior">
+          <img src="/images/hero/meniu/menu.jpg" alt="Lunch plate">
+          <img src="/images/hero/events/kids-birthdays.jpg" alt="Kids birthday">
+          <img src="/images/hero/about.jpg" alt="Interior">
+          <img src="/images/hero/gallery.jpg" alt="Food">
+          <img src="/images/hero/events/family-events.jpg" alt="Family meal">
+          <img src="/images/hero/events/pizza-education.jpg" alt="Pizza workshop">
+          <img src="/images/hero/events/cocktail-degustation.jpg" alt="Cocktails">
         </div>
       </div>
     </section>
@@ -31,7 +31,23 @@
 
   <div id="footer-placeholder"></div>
 
+  <div id="imageOverlay" class="image-overlay" onclick="this.style.display='none'">
+    <img id="overlayImage" src="" alt="Full view">
+  </div>
+
   <script src="/js/layout.js"></script>
   <script src="/js/main.js"></script>
+
+  <script>
+    document.querySelectorAll('.gallery-grid img').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.onclick = function() {
+        const overlay = document.getElementById('imageOverlay');
+        const overlayImg = document.getElementById('overlayImage');
+        overlay.style.display = 'flex';
+        overlayImg.src = this.src;
+      };
+    });
+  </script>
 </body>
 </html>

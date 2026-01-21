@@ -452,21 +452,46 @@
     }
 
     /* Grid layout */
-    .footer-grid {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
+.footer-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  /* Default for mobile: stack elements vertically */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+}
 
-    @media (min-width: 768px) {
-      .footer-grid {
-        grid-template-columns: repeat(3, 1fr);
-        padding: 0 1.5rem;
-      }
-    }
+/* For desktop screens (computer) */
+@media (min-width: 768px) {
+  .footer-grid {
+    /* Change to horizontal layout */
+    flex-direction: row;
+    /* Spread elements apart or keep close in center */
+    justify-content: center;
+    /* Space between logo and contacts on desktop */
+    gap: 10rem; 
+    text-align: left;
+  }
+}
+
+.footer-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  /* Centered on mobile, aligned to start on desktop */
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .footer-contacts {
+    align-items: flex-start;
+  }
+}
+}
 
     /* Logo */
     .footer-logo {
@@ -822,3 +847,85 @@
       z-index: 9999 !important;
       padding: 8px 0 !important;
     }
+/* Fix for mobile header and spacing */
+@media (max-width: 767px) {
+  /* 1. Hide the desktop navigation links on mobile */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  /* 2. Show the mobile menu toggle button */
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+
+  /* 3. Adjust general section spacing for first blocks after hero */
+  .section {
+    padding: 3rem 0 !important;
+  }
+}
+
+/* 4. Utility class to fix the gap if you want to use it directly on a section */
+.top-spacing-fix {
+  padding-top: 3rem !important;
+}
+/* Gallery: 1 column on mobile (default), 2 columns on desktop */
+.gallery-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  /* Corners are already rounded in your HTML, so no extra code needed here */
+}
+/* Gallery images uniform height */
+.gallery-grid img {
+  width: 100%;
+  height: 350px;       /* Čia nustatyk norimą aukštį pikseliais */
+  object-fit: cover;   /* Nukerpa nuotraukos kraštus, kad ji užpildytų plotą nesideformuodama */
+  border-radius: 1rem;
+}
+
+/* Desktop layout: 2 columns */
+@media (min-width: 768px) {
+  .gallery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+}
+/* Fullscreen Image Overlay */
+.image-overlay {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+/* Viskas, kas jau sutvarkyta su i18n, turės žalią rėmelį */
+[data-i18n] {
+    outline: 2px solid #22c55e !important;
+}
+
+/* Viskas, kas neturi rėmelio, reiškia vis dar yra paprastas tekstas */
