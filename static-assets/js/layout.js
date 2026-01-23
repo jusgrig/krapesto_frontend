@@ -406,14 +406,8 @@ FAMILY_EVENTS_DURATION: 'By arrangement'
         title: 'Welcome to Krapesto',
         subtitle: 'Where Families Come Together',
         height: '40vh',
-extra:
-  '<p style="font-size: 1.125rem; max-width: 42rem; margin: 0 auto;">' +
-  'Experience warm hospitality, delicious food, and memories that last a lifetime' +
-  '</p>' +
-  '<div style="margin-top: 2rem;">' +
-  '<a href="/menu/daily-lunch/?lang=en" class="btn btn-primary">View Menu</a>' +
-  '</div>',
-
+        extra:
+          '<p style="font-size: 1.125rem; max-width: 42rem; margin: 0 auto;">Experience warm hospitality, delicious food, and memories that last a lifetime</p><div style="margin-top: 2rem;"><a href="/en/menu/" class="btn btn-primary">View Menu</a></div>'
       },
       about: {
         image: '/images/hero/about.jpg',

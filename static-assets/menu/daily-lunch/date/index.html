@@ -16,21 +16,14 @@
     .menu-item-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
     .menu-item-name { font-weight: 600; font-size: 1.1rem; color: #1f2937; flex: 1; }
     .menu-item-price { color: #047857; font-weight: 700; font-size: 1rem; text-align: right; display: flex; flex-direction: column; gap: 0.25rem; flex-shrink: 0; margin-left: 1rem; }
-    .menu-item-price span, .menu-item-price div { display: block; }
     .menu-item-description { color: #6b7280; font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem; }
     .complex-item { padding: 1rem 0; border-bottom: 1px solid #e5e7eb; }
-    .complex-item:last-child { border-bottom: none; }
     .complex-item-header { display: flex; justify-content: space-between; align-items: flex-start; }
     .complex-item-name { font-weight: 600; font-size: 1.1rem; color: #1f2937; flex: 1; }
     .complex-item-price { color: #047857; font-weight: 700; font-size: 1rem; margin-left: 1rem; }
-    #menu-container { min-height: 200px; overflow-x: hidden; max-width: 100%; box-sizing: border-box; }
+    #menu-container { min-height: 200px; max-width: 100%; box-sizing: border-box; }
     .loading { text-align: center; padding: 2rem; color: #6b7280; }
     .error-message { text-align: center; padding: 2rem; color: #dc2626; font-size: 1.1rem; font-weight: 600; }
-    .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; overflow-x: hidden; width: 100%; box-sizing: border-box; }
-    @media (min-width: 768px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1024px) { .menu-grid { grid-template-columns: repeat(3, 1fr); } }
-    .menu-day-card { background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 1.5rem; transition: all 0.3s; overflow: hidden; word-wrap: break-word; max-width: 100%; }
-    .menu-day-card:hover { border-color: #047857; box-shadow: 0 4px 12px rgba(4, 120, 87, 0.1); }
   </style>
 </head>
 <body data-hero="daily-lunch">
@@ -53,54 +46,76 @@
   <script src="/js/layout.js"></script>
   <script src="/js/main.js"></script>
   <script>
-    const language =
-  new URLSearchParams(window.location.search).get('lang') || 'lt';
+    // 1. Kalbos nustatymas iš URL parametrų
+    const urlParams = new URLSearchParams(window.location.search);
+    let language = urlParams.get('lang');
     
-const API_URL = `/api/lunch-menu/week/?lang=${language}`;
-    const POLL_INTERVAL = 15000;
+    // Jei parametro nėra, tikriname kelią arba nustatome numatytąją 'lt'
+    if (!language) {
+      language = window.location.pathname.startsWith('/en') ? 'en' : 'lt';
+    }
+    
+    const selectedDate = urlParams.get('date');
+    
+    // 2. API užklausos suformavimas (atitinka Django urls.py)
+    const API_URL = selectedDate 
+      ? `/api/lunch-menu/date/${selectedDate}/?lang=${language}`
+      : `/api/lunch-menu/week/?lang=${language}`;
+
+    const POLL_INTERVAL = 30000;
     let pollTimer = null;
     
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
+    function escapeHtml(text) { 
+      if (!text) return '';
+      const div = document.createElement('div'); 
+      div.textContent = text; 
+      return div.innerHTML; 
     }
-    
-    function formatPrice(price) {
-      return '€' + parseFloat(price).toFixed(2);
-    }
-    
+
+    function formatPrice(price) { return '€' + parseFloat(price).toFixed(2); }
+
     function formatDate(dateStr) {
       const date = new Date(dateStr);
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      return date.toLocaleDateString(language === 'lt' ? 'lt-LT' : 'en-US', options);
+      return date.toLocaleDateString(language === 'lt' ? 'lt-LT' : 'en-US', { 
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
+      });
     }
     
     function renderSingleMenu(menuData) {
       if (!menuData || !menuData.published) return '';
-      const hasDishes = menuData.categories && menuData.categories.some(cat => cat.dishes && cat.dishes.length > 0);
-      if (!hasDishes) return '';
       
-      let html = '<div style="margin-bottom: 3rem;">';
-      const dateLink = `/menu/daily-lunch/date/?date=${menuData.date}`;
-      html += `<h2 style="font-size: 1.75rem; font-weight: 700; color: #047857; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #047857;"><a href="${dateLink}" style="color: #047857; text-decoration: none; cursor: pointer;">${formatDate(menuData.date)}</a></h2>`;
+      let html = `<div style="margin-bottom: 3rem;">`;
+      html += `<h2 style="font-size: 1.75rem; font-weight: 700; color: #047857; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #047857;">${formatDate(menuData.date)}</h2>`;
       
       if (menuData.categories && menuData.categories.length > 0) {
         menuData.categories.forEach(category => {
           if (!category.dishes || category.dishes.length === 0) return;
+          const categoryName = language === 'lt' ? category.name_lt : category.name_en;
+          html += `<div class="menu-category"><h3>${escapeHtml(categoryName)}</h3>`;
           category.dishes.forEach(dish => {
             const dishName = language === 'lt' ? dish.name_lt : dish.name_en;
+            const dishIngredients = language === 'lt' ? dish.ingredients_lt : dish.ingredients_en;
             html += `<div class="menu-item"><div class="menu-item-header"><div class="menu-item-name">${escapeHtml(dishName)}</div><div class="menu-item-price">`;
             if (dish.half_price) {
-              html += `<div>½ ${language === 'lt' ? 'porcijos' : 'size'}: ${formatPrice(dish.half_price)}</div><div>${language === 'lt' ? 'Pilna porcija' : 'Full size'}: ${formatPrice(dish.price)}</div>`;
-            } else {
-              html += `<span>${formatPrice(dish.price)}</span>`;
-            }
-            html += '</div></div></div>';
+              html += `<div>½: ${formatPrice(dish.half_price)}</div><div>Pilna: ${formatPrice(dish.price)}</div>`;
+            } else { html += `<span>${formatPrice(dish.price)}</span>`; }
+            html += `</div></div>`;
+            if (dishIngredients) { html += `<div class="menu-item-description">${escapeHtml(dishIngredients)}</div>`; }
+            html += `</div>`;
           });
+          html += `</div>`;
         });
       }
-      html += '</div>';
+      
+      if (menuData.complexes && menuData.complexes.length > 0) {
+        html += `<div class="menu-category"><h3>${language === 'lt' ? 'Kompleksai' : 'Complexes'}</h3>`;
+        menuData.complexes.forEach(complex => {
+          let displayName = language === 'lt' ? complex.name_lt : complex.name_en;
+          html += `<div class="complex-item"><div class="complex-item-header"><div class="complex-item-name">${escapeHtml(displayName)}</div><div class="complex-item-price">${formatPrice(complex.price)}</div></div></div>`;
+        });
+        html += `</div>`;
+      }
+      html += `</div>`;
       return html;
     }
     
@@ -108,22 +123,18 @@ const API_URL = `/api/lunch-menu/week/?lang=${language}`;
       const container = document.getElementById('menu-container');
       if (!container) return;
       container.className = '';
+      
       let html = '';
-      let hasValidMenus = false;
+      // Normalizuojame duomenis: tiek masyvą, tiek pavienį objektą
+      const menuList = Array.isArray(data) ? data : (data.menus || [data]);
       
-      if (data.menus && Array.isArray(data.menus)) {
-        data.menus.forEach(menuData => {
-          const menuHtml = renderSingleMenu(menuData);
-          if (menuHtml) { html += menuHtml; hasValidMenus = true; }
-        });
-      } else if (data.date && data.categories) {
-        const menuHtml = renderSingleMenu(data);
-        if (menuHtml) { html += menuHtml; hasValidMenus = true; }
-      }
-      
-      if (!hasValidMenus || html === '') {
+      menuList.forEach(m => {
+        html += renderSingleMenu(m);
+      });
+
+      if (!html) {
         container.className = 'error-message';
-        container.textContent = language === 'lt' ? 'Meniu nėra prieinamas' : 'Menu not available';
+        container.innerHTML = `<p>${language === 'lt' ? 'Meniu šiai dienai dar nėra paruoštas.' : 'Menu for this day is not ready yet.'}</p>`;
       } else {
         container.innerHTML = html;
       }
@@ -131,27 +142,24 @@ const API_URL = `/api/lunch-menu/week/?lang=${language}`;
     
     async function fetchMenu() {
       try {
-        const response = await fetch(API_URL, { method: 'GET', headers: { 'Accept': 'application/json' }, mode: 'cors' });
+        const response = await fetch(API_URL, { 
+          method: 'GET', 
+          headers: { 'Accept': 'application/json' }
+        });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        if (typeof data !== 'object' || data === null) throw new Error('Invalid response');
         renderMenu(data);
       } catch (error) {
-        console.error('Failed to fetch menu:', error);
-        const container = document.getElementById('menu-container');
-        if (container) {
-          container.className = 'error-message';
-          container.textContent = language === 'lt' ? 'Meniu nėra prieinamas' : 'Menu not available';
-        }
+        console.error('API Error:', error);
+        document.getElementById('menu-container').innerHTML = `<div class="error-message">Nepavyko įkelti meniu.</div>`;
       }
     }
     
     function startPolling() { fetchMenu(); pollTimer = setInterval(fetchMenu, POLL_INTERVAL); }
-    function stopPolling() { if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }
-    
-    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', startPolling); }
-    else { startPolling(); }
+    function stopPolling() { if (pollTimer) clearInterval(pollTimer); }
+
+    document.addEventListener('DOMContentLoaded', startPolling);
     window.addEventListener('beforeunload', stopPolling);
   </script>
 </body>
-</html>
+</html>s

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dienos Meniu Ekranui - Krapesto</title>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        #screen-menu-wrapper {
+            width: 1920px;
+            height: 1080px;
+            background-color: white;
+            padding: 40px 80px;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            flex-grow: 1;
+            align-content: start;
+            margin-top: 10px;
+        }
+
+        .menu-column {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .menu-category h3 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #047857;
+            margin: 0 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 5px solid #047857;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-item, .complex-item {
+            padding: 18px 0;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .menu-item-header, .complex-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .menu-item-name, .complex-item-name {
+            font-weight: 600;
+            font-size: 2.1rem;
+            color: #111827;
+            flex: 1;
+            line-height: 1.2;
+        }
+
+        /* Kainos be bold efekto */
+        .menu-item-price, .complex-item-price {
+            color: #047857;
+            font-weight: 400; 
+            font-size: 2.1rem;
+            margin-left: 35px;
+            white-space: nowrap;
+        }
+
+        .menu-item-description {
+            color: #4b5563;
+            font-size: 1.6rem;
+            margin-top: 10px;
+            line-height: 1.4;
+            font-style: italic;
+        }
+
+        #qr-and-date-container {
+            position: absolute;
+            bottom: 40px;
+            right: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        #small-date-header {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        #qr-code-img {
+            width: 170px;
+            height: 170px;
+        }
+
+        #qr-code-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #047857;
+            margin-top: 10px;
+        }
+
+        .error-message {
+            grid-column: span 2;
+            font-size: 3.5rem;
+            color: #dc2626;
+            text-align: center;
+            margin-top: 250px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div id="screen-menu-wrapper">
+        <div class="menu-grid" id="menu-grid">
+            <div class="menu-column" id="left-column"></div>
+            <div class="menu-column" id="right-column"></div>
+        </div>
+
+        <div id="qr-and-date-container">
+            <div id="small-date-header">Kraunama...</div>
+            <img id="qr-code-img" alt="QR Code" />
+            <div id="qr-code-text">MENU IN ENGLISH</div>
+        </div>
+    </div>
+
+    <script>
+        const today = new Date();
+        // Naudojame ISO formatą YYYY-MM-DD
+        const formattedDate = today.toISOString().split('T')[0];
+        const API_URL = `/api/lunch-menu/date/${formattedDate}/?lang=lt`;
+
+        function formatPrice(price) {
+            if (price === null || price === undefined) return '';
+            const num = typeof price === 'string' ? parseFloat(price) : price;
+            return isNaN(num) ? '' : '€' + num.toFixed(2);
+        }
+
+        async function fetchMenu() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('API Error');
+                const data = await response.json();
+                const menu = Array.isArray(data) ? data[0] : data;
+                
+                if (!menu || !menu.published) {
+                    document.getElementById('menu-grid').innerHTML = '<div class="error-message">Šiandienos meniu dar ruošiamas</div>';
+                    return;
+                }
+
+                renderMenu(menu);
+                generateQR();
+            } catch (err) {
+                console.error(err);
+                document.getElementById('menu-grid').innerHTML = '<div class="error-message">Nepavyko įkelti meniu</div>';
+            }
+        }
+
+        function renderMenu(menu) {
+            // Nustatome datos formatą tiesiai į YYYY-MM-DD virš QR kodo
+            document.getElementById('small-date-header').innerText = menu.date;
+            
+            const leftCol = document.getElementById('left-column');
+            const rightCol = document.getElementById('right-column');
+            
+            leftCol.innerHTML = '';
+            rightCol.innerHTML = '';
+
+            if (menu.categories) {
+                menu.categories.forEach(cat => {
+                    const html = createCategoryHtml(cat);
+                    const name = cat.name_lt.toLowerCase();
+                    
+                    if (name.includes('sriuba') || name.includes('pagrindinis') || name.includes('kepsnys')) {
+                        leftCol.innerHTML += html;
+                    } else {
+                        rightCol.innerHTML += html;
+                    }
+                });
+            }
+
+            if (menu.complexes && menu.complexes.length > 0) {
+                let complexHtml = `<div class="menu-category"><h3>Kompleksai</h3>`;
+                menu.complexes.forEach(c => {
+                    complexHtml += `
+                        <div class="complex-item">
+                            <div class="complex-item-header">
+                                <div class="complex-item-name">${c.name_lt}</div>
+                                <div class="complex-item-price">${formatPrice(c.price)}</div>
+                            </div>
+                        </div>`;
+                });
+                complexHtml += `</div>`;
+                rightCol.innerHTML += complexHtml;
+            }
+        }
+
+        function createCategoryHtml(cat) {
+            if (!cat.dishes || cat.dishes.length === 0) return '';
+            let html = `<div class="menu-category"><h3>${cat.name_lt}</h3>`;
+            cat.dishes.forEach(dish => {
+                const priceHtml = dish.half_price 
+                    ? `½ ${formatPrice(dish.half_price)} / ${formatPrice(dish.price)}` 
+                    : formatPrice(dish.price);
+
+                html += `
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <div class="menu-item-name">${dish.name_lt}</div>
+                            <div class="menu-item-price">${priceHtml}</div>
+                        </div>
+                        ${dish.ingredients_lt ? `<div class="menu-item-description">${dish.ingredients_lt}</div>` : ''}
+                    </div>`;
+            });
+            html += `</div>`;
+            return html;
+        }
+
+        function generateQR() {
+            const url = `https://www.krapesto.lt/menu/daily-lunch/date/?date=${formattedDate}&lang=en`;
+            document.getElementById('qr-code-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+        }
+
+        fetchMenu();
+        setInterval(fetchMenu, 60000); 
+    </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 interface DailyMenu {
   date: string;
@@ -29,44 +30,53 @@ interface DailyMenu {
   }>;
 }
 
-interface MenuResponse {
-  menus: DailyMenu[];
-}
+type WeekResponse = DailyMenu[] | { menus: DailyMenu[] } | DailyMenu;
 
 export default function DailyLunchPage() {
   const [menus, setMenus] = useState<DailyMenu[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // 🔹 Kalba iš URL
-  const getLanguage = () => {
-    if (typeof window === 'undefined') return 'lt';
-    return new URLSearchParams(window.location.search).get('lang') || 'lt';
-  };
-
   const [language, setLanguage] = useState<'lt' | 'en'>('lt');
 
-  // 🔹 Atnaujinam kalbą kai pasikeičia URL
   useEffect(() => {
-    const lang = getLanguage();
-    setLanguage(lang === 'en' ? 'en' : 'lt');
+    const params = new URLSearchParams(window.location.search);
+    setLanguage(params.get('lang') === 'en' ? 'en' : 'lt');
   }, []);
 
-  // 🔹 Kraunam meniu pagal kalbą
+  const normalize = (data: WeekResponse): DailyMenu[] => {
+    if (Array.isArray(data)) return data;
+    if (data && typeof data === 'object' && 'menus' in data && Array.isArray((data as any).menus)) return (data as any).menus;
+    if (data && (data as DailyMenu).date) return [data as DailyMenu];
+    return [];
+  };
+
   useEffect(() => {
-    const API_URL = `http://57.128.249.100:8000/api/menu/daily-lunch/?lang=${language}`;
+    const params = new URLSearchParams(window.location.search);
+    const selectedDate = params.get('date');
+
+    // FIXED: API_PATH now strictly follows Django urls.py: lunch-menu/date/<str:date_str>/
+    const API_PATH = selectedDate 
+      ? `/api/lunch-menu/date/${selectedDate}/?lang=${language}`
+      : `/api/lunch-menu/week/?lang=${language}`;
 
     const fetchMenu = async () => {
       try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('Failed to fetch menu');
-
-        const data: MenuResponse = await response.json();
-        setMenus(data.menus);
-        setLoading(false);
+        const res = await fetch(API_PATH, {
+          method: 'GET',
+          headers: { Accept: 'application/json' },
+          cache: 'no-store',
+        });
+        
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        
+        const raw: WeekResponse = await res.json();
+        const list = normalize(raw);
+        setMenus(list);
+        setError(null);
       } catch (err) {
-        console.error(err);
+        console.error("API Error:", err);
         setError(language === 'lt' ? 'Meniu nėra prieinamas' : 'Menu not available');
+      } finally {
         setLoading(false);
       }
     };
@@ -86,36 +96,48 @@ export default function DailyLunchPage() {
 
   if (loading) return <div className="loading">Kraunamas meniu...</div>;
   if (error) return <div className="error-message">{error}</div>;
-  if (!menus.length)
-    return <div className="error-message">
-      {language === 'lt' ? 'Meniu nėra' : 'Menu not available'}
-    </div>;
+
+  const visibleMenus = menus.filter(m => m.published);
+
+  if (!visibleMenus.length) {
+    return (
+      <div className="error-message">
+        {language === 'lt' ? 'Meniu nėra prieinamas' : 'Menu not available'}
+      </div>
+    );
+  }
 
   return (
     <>
-      {menus.map(menu => (
+      {visibleMenus.map(menu => (
         <div key={menu.date} style={{ marginBottom: '3rem' }}>
           <h2 style={{
             fontSize: '1.75rem',
             fontWeight: 700,
             color: '#047857',
-            marginBottom: '1.5rem',
+            paddingBottom: '0.5rem',
             borderBottom: '3px solid #047857'
           }}>
-            {formatDate(menu.date)}
+            <Link
+              href={`/menu/daily-lunch/date/?date=${encodeURIComponent(menu.date)}${language ? `&lang=${language}` : ''}`}
+              style={{ color: '#047857', textDecoration: 'none' }}
+            >
+              {formatDate(menu.date)}
+            </Link>
           </h2>
 
           {menu.categories?.map((cat, i) => (
             <div key={i} className="menu-category">
-              <h3>{language === 'lt' ? cat.name_lt : cat.name_en}</h3>
-
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#047857', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '2px solid #047857' }}>
+                {language === 'lt' ? cat.name_lt : cat.name_en}
+              </h3>
               {cat.dishes.map((dish, j) => (
-                <div key={j} className="menu-item">
-                  <div className="menu-item-header">
-                    <div className="menu-item-name">
+                <div key={j} className="menu-item" style={{ padding: '1rem 0', borderBottom: '1px solid #e5e7eb' }}>
+                  <div className="menu-item-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div className="menu-item-name" style={{ fontWeight: 600, fontSize: '1.1rem', color: '#1f2937' }}>
                       {language === 'lt' ? dish.name_lt : dish.name_en}
                     </div>
-                    <div className="menu-item-price">
+                    <div className="menu-item-price" style={{ color: '#047857', fontWeight: 700 }}>
                       {dish.half_price ? (
                         <>
                           <div>½ {formatPrice(dish.half_price)}</div>
@@ -127,7 +149,7 @@ export default function DailyLunchPage() {
                     </div>
                   </div>
                   {(language === 'lt' ? dish.ingredients_lt : dish.ingredients_en) && (
-                    <div className="menu-item-description">
+                    <div className="menu-item-description" style={{ color: '#6b7280', fontSize: '0.95rem', marginTop: '0.5rem' }}>
                       {language === 'lt' ? dish.ingredients_lt : dish.ingredients_en}
                     </div>
                   )}
@@ -136,16 +158,18 @@ export default function DailyLunchPage() {
             </div>
           ))}
 
-          {menu.complexes?.length > 0 && (
+          {menu.complexes && menu.complexes.length > 0 && (
             <div className="menu-category">
-              <h3>{language === 'lt' ? 'Kompleksai' : 'Complexes'}</h3>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#047857', marginBottom: '1rem' }}>
+                {language === 'lt' ? 'Kompleksai' : 'Complexes'}
+              </h3>
               {menu.complexes.map((c, i) => (
-                <div key={i} className="complex-item">
-                  <div className="complex-item-header">
-                    <div className="complex-item-name">
+                <div key={i} className="complex-item" style={{ padding: '1rem 0', borderBottom: '1px solid #e5e7eb' }}>
+                  <div className="complex-item-header" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <div className="complex-item-name" style={{ fontWeight: 600 }}>
                       {language === 'lt' ? c.name_lt : c.name_en}
                     </div>
-                    <div className="complex-item-price">
+                    <div className="complex-item-price" style={{ color: '#047857', fontWeight: 700 }}>
                       {formatPrice(c.price)}
                     </div>
                   </div>
